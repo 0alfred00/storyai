@@ -77,3 +77,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# custom gems
+gem "faker"
+gem "open-uri"
+gem "cloudinary"
