@@ -10,9 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_081401) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_152259) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "story_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_favorites_on_story_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "prompts", force: :cascade do |t|
+    t.string "language"
+    t.integer "length"
+    t.string "user_input"
+    t.string "age_group"
+    t.string "genre"
+    t.integer "reference_story_id"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_prompts_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.bigint "story_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_ratings_on_story_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.text "summary"
+    t.boolean "public"
+    t.text "follow_up_summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +68,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_081401) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "stories"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "prompts", "users"
+  add_foreign_key "ratings", "stories"
+  add_foreign_key "ratings", "users"
 end
