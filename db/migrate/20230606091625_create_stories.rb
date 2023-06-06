@@ -4,11 +4,12 @@ class CreateStories < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :body
       t.text :summary
-      t.boolean :public
+      t.boolean :public, default: false
       t.text :follow_up_summary
-      t.references :prompt, null: false, foreign_key: true
+      # t.references :prompt, null: false, foreign_key: true
 
       t.timestamps
     end
+    # add_index :stories, [:id, :reference_story_id], unique: true
   end
 end

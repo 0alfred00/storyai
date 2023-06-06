@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_152259) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_101103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,10 +29,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_152259) do
     t.string "user_input"
     t.string "age_group"
     t.string "genre"
-    t.integer "reference_story_id"
+    t.bigint "reference_story_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["reference_story_id"], name: "index_prompts_on_reference_story_id"
     t.index ["user_id"], name: "index_prompts_on_user_id"
   end
 
@@ -50,10 +51,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_152259) do
     t.string "title"
     t.text "body"
     t.text "summary"
-    t.boolean "public"
+    t.boolean "public", default: false
     t.text "follow_up_summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "prompt_id", null: false
+    t.index ["prompt_id"], name: "index_stories_on_prompt_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,7 +73,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_152259) do
 
   add_foreign_key "favorites", "stories"
   add_foreign_key "favorites", "users"
+  add_foreign_key "prompts", "stories", column: "reference_story_id"
   add_foreign_key "prompts", "users"
   add_foreign_key "ratings", "stories"
   add_foreign_key "ratings", "users"
+  add_foreign_key "stories", "prompts"
 end
