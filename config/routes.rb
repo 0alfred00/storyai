@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/stories', to: 'stories#index'
-  get '/stories/new', to: 'stories#new'
+  # get '/stories/new', to: 'stories#new'
   post '/stories', to: 'stories#create'
   get '/stories/:id', to: 'stories#show'
   get '/stories/history', to: 'stories#history'

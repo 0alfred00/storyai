@@ -82,3 +82,4 @@ end
 gem "faker"
 gem "open-uri"
 gem "cloudinary"
+gem "ruby-openai"
