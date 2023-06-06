@@ -37,16 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_101103) do
     t.index ["user_id"], name: "index_prompts_on_user_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "rating"
-    t.bigint "user_id", null: false
-    t.bigint "story_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["story_id"], name: "index_ratings_on_story_id"
-    t.index ["user_id"], name: "index_ratings_on_user_id"
-  end
-
   create_table "stories", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -75,7 +65,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_101103) do
   add_foreign_key "favorites", "users"
   add_foreign_key "prompts", "stories", column: "reference_story_id"
   add_foreign_key "prompts", "users"
-  add_foreign_key "ratings", "stories"
-  add_foreign_key "ratings", "users"
   add_foreign_key "stories", "prompts"
 end
