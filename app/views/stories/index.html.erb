@@ -1,1 +1,6 @@
 <h1>Yeah</h1>
+<div class="storygrid">
+  <% @stories.each do |story| %>
+    <%= render "story_card", story: story %>
+  <% end %>
+</div>
