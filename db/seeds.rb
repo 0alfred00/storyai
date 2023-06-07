@@ -25,8 +25,8 @@ users.each do |user|
       language: "German",
       length: rand(250..500),
       user_input: Faker::Lorem.sentence(word_count: 10),
-      age_group: Faker::Number.between(from: 1, to: 18),
-      genre: Faker::Book.genre,
+      age_group: ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"].sample
+      genre: ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"].sample,
       user_id: user.id,
       created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
     )
