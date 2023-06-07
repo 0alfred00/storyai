@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color:#81B4BA;
+  padding-right:25px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,14 +9,29 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+  margin-left: 25px;
+  border-radius: 50%;
 }
 
 .search-bar{
-  background-color: white;
-  display: flex;
-  align-items: center;
+  background-color: #ffffff;
+  text-align: center;
   border-radius: 12px;
-  width: 176px;
+  width: 200px;
   height: 30px;
+}
+
+.nav-link{
+  border: 1px solid #F8FBFC;
+  border-radius:2rem;
+  background-color: #F8FBFC;
+  text-align: center;
+  padding-top: 3px;
+  width: 100px;
+  height: 30px;
+}
+
+.navbar-icon {
+  color:$icons;
 }
