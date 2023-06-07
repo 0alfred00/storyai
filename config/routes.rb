@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   delete '/favorites/:id', to: 'favorites#destroy'
   post '/stories/:id', to: 'stories#create'
   patch '/stories/:id', to: 'stories#update'
+
+  # for testing openai
+  get '/openai', to: 'openai#index'
+  post '/openai', to: 'openai#create'
 end
