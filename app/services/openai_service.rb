@@ -15,7 +15,7 @@ class OpenaiService
       parameters: {
           model: "gpt-3.5-turbo", # Required.
           messages: [{ role: "user", content: prompt }], # Required.
-          temperature: 1.6,
+          temperature: 0.7,
           stream: false,
 					max_tokens: 3200 # keep buffer for prompt tokens
       })
