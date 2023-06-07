@@ -18,6 +18,9 @@ class OpenaiController < ApplicationController
     # create story
     new_story = Story.create(title: @response["title"], body: @response["body"], summary: @response["summary"], follow_up_summary: @response["follow_up_summary"], public: true, prompt_id: new_prompt.id)
     new_story.save
+
+    # redirect
+    redirect_to openai_path
   end
 
   def build_prompt(user_input, length, language, genre)
