@@ -6,6 +6,6 @@ class Prompt < ApplicationRecord
 
   validates :language, inclusion: { in: %w(English Spanish German French) }
   validates :user_input, presence: true
-  validates :age_group, inclusion: { in: ["Babies", "Toddler", "Ages 5-8", "Ages 9-1"] }
+  validates :age_group, inclusion: { in: ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"] }
   validates :genre, inclusion: { in: %w(Educational Adventurous Mystery Fairytale) }
 end
