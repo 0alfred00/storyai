@@ -3,18 +3,4 @@ class Story < ApplicationRecord
 
   has_many :favorites
   has_many :users, through: :favorites
-  # has_many :users, through: :prompts
-
-  # validates :title, presence: true
-  # validates :body, presence: true
-  # validates :summary, presence: true
-  # validates :follow_up_summary, presence: true
-
-  # after_initialize :set_defaults
-
-  # private
-
-  # def set_defaults
-  #   self.public ||= false
-  # end
 end
