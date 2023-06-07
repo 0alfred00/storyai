@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
     reference_story_id = params[:story_id].present? ? params[:story_id] : nil
 
     # create prompt
-    new_prompt = Prompt.create(language: params[:language], length: params[:length], user_input: params[:user_input], age_group: 0, genre: params[:genre], user_id: current_user.id, reference_story_id: reference_story_id)
+    new_prompt = Prompt.create(language: params[:language], length: params[:length], user_input: params[:user_input], age_group: params[:age_group], genre: params[:genre], user_id: current_user.id, reference_story_id: reference_story_id)
     new_prompt.save
 
     # send prompt to api and receive response
