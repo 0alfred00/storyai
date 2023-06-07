@@ -24,6 +24,8 @@ class OpenaiController < ApplicationController
   end
 
   def build_prompt(user_input, length, language, genre)
+
+    # this is the prompt with interpolated variables
     "You are a world class author for children's bedtime stories. You will create a bedtime story that adheres to the best practices of storytelling and following the hero’s journey while being appropriate for children. The story is later read by parents to their children before they go to bed.
     I will give you a content instruction, story parameters and restrictions that should control the content of the bedtime story you are creating.
 
@@ -31,7 +33,7 @@ class OpenaiController < ApplicationController
     - #{user_input}
 
     Parameters:
-    - Length should be 400 words but no longer than #{length.to_i + 100} words.
+    - Length should be around #{length} words but must not be longer than #{length.to_i + 100} words.
     - Language of the story is #{language}
     - Genre is #{genre}
 
@@ -39,9 +41,9 @@ class OpenaiController < ApplicationController
     - The story has to be suited for children and must not contain inappropriate content like violence, drugs, murder, sex, nudity and swearing
 
     Now please create the bedtime story based on the instructions, content instruction, story parameters and restrictions given above. After you have created the bedtime story, please also create the following. Start a new paragraph for each item:
-    - Title for the bedtime story, not longer than 5 words
-    - Summary of the bedtime story not longer than 5 sentences
-    - Summary of the bedtime story not longer than one sentence
+    - Title for the bedtime story, not longer than 5 words in #{language}
+    - Summary of the bedtime story not longer than 5 sentences in English
+    - Summary of the bedtime story not longer than one sentence in #{language}
     I would like the answer to be in JSON format, with the following keys: body, title, summary and follow_up_summary.
 
     The body key should contain the whole content of the story, the title the title of the story, the summary a one liner summary of the story and the follow_up_summary a paragraph summary of the story. The response should be a json and json only!
