@@ -1,14 +1,17 @@
 <!-- app/views/openai/index.html.erb -->
 <%= form_with url: openai_path do |form| %>
-  <%= form.label :prompt %>
-  <%= form.text_field :prompt %>
+  <%= form.label :user_input %>
+  <%= form.text_field :user_input %>
+  <%= form.label :language %>
+  <%= form.text_field :language %>
+  <%= form.label :length %>
+  <%= form.text_field :length %>
+  <%= form.label :genre %>
+  <%= form.text_field :genre %>
   <%= form.submit "Ask" %>
 <% end %>
 <br>
-<% if @user_input %>
-  <p>Prompt: <%= @user_input %></p>
-<% end %>
+<p>Last Story:<%= Story.last.body %></p>
 <br>
-<% if @response_text %>
-  <p>Response: <%= @response_text %></p>
-<% end %>
+<br>
+<p>Last Prompt:<%= Prompt.last.user_input %></p>
