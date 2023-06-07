@@ -1,0 +1,19 @@
+.storycard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  justify-items: center;
+
+}
+
+// @media(max-width: 992px) {
+//   .storycard-container {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
+
+// @media(max-width: 768px) {
+//   .storycard-container {
+//     grid-template-columns: 1fr;
+//   }
+// }
