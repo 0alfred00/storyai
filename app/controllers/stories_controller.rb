@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.all
-    
+    #@stories = Story.group(:prompt.grenre)
   end
 
   def show
