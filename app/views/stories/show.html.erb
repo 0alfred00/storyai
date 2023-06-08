@@ -1,0 +1,13 @@
+<div class="story-container">
+  <div class="story-title">
+    <h1><%= @story.title %></h1>
+  </div>
+  <div class="story-content">
+    <p>
+      <span data-controller="typed"
+            data-typed-sentences-value="<%= [@story.body].to_json %>">
+      </span>
+    </p>
+  </div>
+</div>
+<%= render "shared/prompt" %>
