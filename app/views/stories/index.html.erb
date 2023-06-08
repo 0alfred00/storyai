@@ -1,10 +1,16 @@
-<div class="Teaser">Welcome to Soozie!</h1>
-  <%= render "shared/prompt" %>
-<div class="container p-0">
-  <%= render "category_card", prompt: Prompt.first %>
-  <div class="storycard-container">
-    <% @stories.each do |story| %>
-      <%= render "story_card", story: story %>
-    <% end %>
-    </div>
+<div class="teaser">Welcome to Soozie!</div>
+<div class="teaser-description">
+  Create here your own bespoke bedtime stories for your beloved children.
+  <br>It's never been easier thanks to artificial intelligence.
   </div>
+  <%= render "shared/prompt" %>
+  <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
+    <div class="container p-0">
+      <%= render "shared/category_card", genre: genre %>
+      <div class="storycard-container">
+        <% Story.joins(:prompt, :favorites).where(prompts: {genre: genre}).group(:id).order("COUNT(favorites.id) DESC").first(3).each do |story| %>
+          <%= render "shared/story_card", story: story %>
+        <% end %>
+        </div>
+      </div>
+  <% end %>
