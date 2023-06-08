@@ -1,6 +1,6 @@
 .story-container {
   margin: 0 auto;
-  margin-top: 20px;
+  margin-bottom: 40px;
   padding: 20px;
   border: 1px solid lightgrey;
   border-radius: 30px;
@@ -19,5 +19,9 @@
     p {
       margin-bottom: 10px;
     }
+  }
+
+  .fa-heart {
+    // text-align: right;
   }
 }

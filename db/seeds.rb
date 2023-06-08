@@ -43,7 +43,7 @@ users.each do |user|
       created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
     )
 
-    5.times do
+    rand(0..100).times do
       story.favorites.create!(
         user_id: users.sample.id,
         created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)

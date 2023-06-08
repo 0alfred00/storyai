@@ -1,0 +1,11 @@
+<div class="container p-0">
+  <div class="category-card">
+    <div class="category-title">Favorites</div>
+  </div>
+  <div class="storycard-container">
+    <% @stories.each do |story| %>
+      <%= render "shared/story_card", story: story %>
+    <% end %>
+  </div>
+</div>
+
