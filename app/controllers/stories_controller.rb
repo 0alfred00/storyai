@@ -3,7 +3,6 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.all
-    #@stories = Story.group(:prompt.grenre)
   end
 
   def show
@@ -15,7 +14,7 @@ class StoriesController < ApplicationController
     @prompt = build_prompt(params[:user_input], params[:length], params[:language], params[:genre])
 
     # checking if there is a story to reference
-    reference_story_id = params[:story_id].present? ? params[:story_id] : nil
+    reference_story_id = params[:id].present? ? params[:id] : nil
 
     # create prompt
     new_prompt = Prompt.create(language: params[:language], length: params[:length], user_input: params[:user_input], age_group: params[:age_group], genre: params[:genre], user_id: current_user.id, reference_story_id: reference_story_id)
@@ -34,29 +33,59 @@ class StoriesController < ApplicationController
   end
 
   def build_prompt(user_input, length, language, genre)
-
     # this is the prompt with interpolated variables
-    "You are a world class author for children's bedtime stories. You will create a bedtime story that adheres to the best practices of storytelling and following the hero’s journey while being appropriate for children. The story is later read by parents to their children before they go to bed.
-    I will give you a content instruction, story parameters and restrictions that should control the content of the bedtime story you are creating.
+    # it either runs the initial prompt or the follow up prompt based on whether there is a reference story
 
-    Content instruction
-    - #{user_input}
+    follow_up_summary = Story.find(params[:id]).follow_up_summary
+    if params[:id].present?
+      "You are a world class author for children's bedtime stories. You will create a sequel bedtime story that adheres to the best practices of storytelling and following the hero’s journey while being appropriate for children. The story is later read by parents to their children before they go to bed.
+      I will give you a summary of the previous story to base your sequel on, additional content instructions, story parameters and restrictions that should control the content of the bedtime story you are creating.
 
-    Parameters:
-    - Length should be around #{length} words but must not be longer than #{length.to_i + 100} words.
-    - Language of the story is #{language}
-    - Genre is #{genre}
+      Summary of previous story:
+      - #{follow_up_summary}
 
-    Restrictions:
-    - The story has to be suited for children and must not contain inappropriate content like violence, drugs, murder, sex, nudity and swearing
+      Content instruction
+      - #{user_input}
 
-    Now please create the bedtime story based on the instructions, content instruction, story parameters and restrictions given above. After you have created the bedtime story, please also create the following. Start a new paragraph for each item:
-    - Title for the bedtime story, not longer than 5 words in #{language}
-    - Summary of the bedtime story not longer than 5 sentences in English
-    - Summary of the bedtime story not longer than one sentence in #{language}
-    I would like the answer to be in JSON format, with the following keys: body, title, summary and follow_up_summary.
+      Parameters:
+      - Length should be around #{length} words but must not be longer than #{length.to_i + 100} words.
+      - Language of the story is #{language}
+      - Genre is #{genre}
 
-    The body key should contain the whole content of the story, the title the title of the story, the summary a one liner summary of the story and the follow_up_summary a paragraph summary of the story. The response should be a json and json only!
-     "
+      Restrictions:
+      - The story has to be suited for children and must not contain inappropriate content like violence, drugs, murder, sex, nudity and swearing
+
+      Now please create the sequel bedtime story based on the summary, content instruction, story parameters and restrictions given above. After you have created the bedtime story, please also create the following:
+      - Title for the bedtime story, not longer than 5 words in #{language}
+      - Summary of the bedtime story not longer than 5 sentences and not less than 4 sentences in English
+      - Summary of the bedtime story not longer than one sentence in #{language}
+      I would like the answer to be in JSON format, with the following keys: body, title, summary and follow_up_summary.
+
+      The body key should contain the whole content of the story, the title the title of the story, the summary a one liner summary of the story and the follow_up_summary a paragraph summary of the story. The response should be a json and json only!
+      "
+    else
+      "You are a world class author for children's bedtime stories. You will create a bedtime story that adheres to the best practices of storytelling and following the hero’s journey while being appropriate for children. The story is later read by parents to their children before they go to bed.
+      I will give you a content instruction, story parameters and restrictions that should control the content of the bedtime story you are creating.
+
+      Content instruction
+      - #{user_input}
+
+      Parameters:
+      - Length should be around #{length} words but must not be longer than #{length.to_i + 100} words.
+      - Language of the story is #{language}
+      - Genre is #{genre}
+
+      Restrictions:
+      - The story has to be suited for children and must not contain inappropriate content like violence, drugs, murder, sex, nudity and swearing
+
+      Now please create the bedtime story based on the instructions, content instruction, story parameters and restrictions given above. After you have created the bedtime story, please also create the following. Start a new paragraph for each item:
+      - Title for the bedtime story, not longer than 5 words in #{language}
+      - Summary of the bedtime story not longer than 5 sentences in English
+      - Summary of the bedtime story not longer than one sentence in #{language}
+      I would like the answer to be in JSON format, with the following keys: body, title, summary and follow_up_summary.
+
+      The body key should contain the whole content of the story, the title the title of the story, the summary a one liner summary of the story and the follow_up_summary a paragraph summary of the story. The response should be a json and json only!
+      "
+    end
   end
 end
