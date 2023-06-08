@@ -1,9 +1,9 @@
-  <%= render "shared/prompt" %>
-  <div class="container p-0">
-    <div class="category-card">Educationaal stories</div>
-    <div class="storycard-container">
-      <% @stories.each do |story| %>
-        <%= render "story_card", story: story %>
-      <% end %>
+<div class="Teaser">Welcome to Soozie!</h1>
+<div class="container p-0">
+  <%= render "category_card", prompt: Prompt.first %>
+  <div class="storycard-container">
+    <% @stories.each do |story| %>
+      <%= render "story_card", story: story %>
+    <% end %>
     </div>
   </div>
