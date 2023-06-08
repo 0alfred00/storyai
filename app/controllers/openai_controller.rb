@@ -20,7 +20,7 @@ class OpenaiController < ApplicationController
     new_story.save
 
     # redirect
-    redirect_to openai_path
+    redirect_to story_path(new_story)
   end
 
   def build_prompt(user_input, length, language, genre)

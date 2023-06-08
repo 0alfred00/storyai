@@ -14,6 +14,9 @@
       <%= form.select :genre, %w(Educational Adventurous Mystery Fairytale) %>
       <%= form.label :age_group %>
       <%= form.select :age_group, ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"] %>
+      <% if @story %>
+        <%=form.hidden_field :reference_story_id, value: @story.id %>
+      <% end %>
     </div>
     <% end %>
   </div>

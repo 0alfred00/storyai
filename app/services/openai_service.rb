@@ -21,7 +21,7 @@ class OpenaiService
       })
 
     if response["error"]
-      return response["error"]["message"]
+      return response
     else
       return response["choices"][0]["message"]["content"]
       # return JSON.parse(response["choices"][0]["message"]["content"])

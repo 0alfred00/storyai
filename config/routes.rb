@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get '/stories/new', to: 'stories#new'
   post '/stories', to: 'stories#create'
   get '/stories/history', to: 'stories#history'
-  get '/stories/:id', to: 'stories#show'
+  get '/stories/:id', to: 'stories#show', as: 'story'
   post '/favorites/:id', to: 'favorites#create'
   get '/favorites', to: 'favorites#index'
   delete '/favorites/:id', to: 'favorites#destroy'
