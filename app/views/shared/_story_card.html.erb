@@ -7,7 +7,10 @@
     </div>
     <div class="details-container">
       <div class="words-count"><%= story.prompt.length.to_i / 130 %> mins</div>
-      <div class="hearts-count"><%= story.favorites.count %>&nbsp;<i class="fa-solid fa-heart"></i></i></div>
+      <div class="heart-container">
+      <div class="hearts-count"><%= story.favorites.count %>&ensp;</div>
+      <div class="card-heart fa-solid fa-heart"></div>
+      </div>
     </div>
   </div>
 </div>

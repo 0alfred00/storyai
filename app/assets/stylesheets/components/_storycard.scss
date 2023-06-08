@@ -18,7 +18,7 @@
 }
 
 .card-container {
-  padding: 10px 15px;
+  padding: 20px;
   display: flex;
   height: 56%;
   flex-direction: column;
@@ -39,29 +39,30 @@
   overflow: hidden;
 }
 
+.heart-container{
+  display: flex;
+}
+
 .hearts-count {
-  font-size: 12px;
+  font-size: 14px;
   color: $card-details;
   text-align: right;
   font-weight: 400;
 }
 
+.card-heart {
+  font-size: 20px;
+  color: $card-details;
+}
+
 .words-count {
-  font-size: 12px;
+  font-size: 14px;
   color: $card-details;
   text-align: left;
   font-weight: 400;
 }
 
-.created-year {
-  font-size: 12px;
-  color: $card-details;
-  text-align: right;
-  font-weight: 400;
-}
-
 .details-container {
-
   display: flex;
   justify-content: space-between;
 }
