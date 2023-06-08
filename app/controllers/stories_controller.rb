@@ -6,6 +6,10 @@ class StoriesController < ApplicationController
     
   end
 
+  def show
+    @story = Story.find(params[:id])
+  end
+
   def create
     # create the final prompt to be sent to api
     @prompt = build_prompt(params[:user_input], params[:length], params[:language], params[:genre])
