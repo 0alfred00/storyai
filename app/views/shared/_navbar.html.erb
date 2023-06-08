@@ -16,22 +16,27 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "#", "#", class: "nav-link" %>
+          <%# <%= link_to "#", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to root_path, class: "navbar-icon" do %>
-              <i class="fa-solid fa-heart"></i>
-              <span><i class="fa-regular fa-user"></i></span>
-            <% end%>
+            <%= link_to stories_history_path, class: "navbar-icon" do %>
+              <i class="fa-solid fa-clock-rotate-left m-2 fs-3" style="color:#F8FBFC;"></i>
+                <% end%>
+            <%= link_to favorites_path, class: "navbar-icon" do %>
+              <i class="fa-solid fa-heart m-2 fs-3" style="color:#F8FBFC;"></i>
+              <% end%>
+            <%= link_to favorites_path, class: "navbar-icon" do %>
+              <span><i class="fa-regular fa-user m-2 fs-3" style="color:#F8FBFC;"></i></span>
+              <% end%>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
         <% else %>
         <div class="button">
