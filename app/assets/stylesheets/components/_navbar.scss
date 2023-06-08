@@ -2,7 +2,12 @@
   justify-content: space-between;
   background-color:#81B4BA;
   padding-right:25px;
+  // transition: background-color 0.5s;
 }
+// .navbar-lewagon:hover {
+//   background-color:#d9d0d8;
+//   animation-duration: 0.55s;
+// }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -15,11 +20,19 @@
 }
 
 .search-bar{
+  border: none;
   background-color: #ffffff;
   text-align: center;
   border-radius: 12px;
   width: 200px;
   height: 30px;
+  box-sizing: border-box;
+  box-shadow:  0 1px 5px 0;
+  cursor: pointer;
+}
+.search-button{
+  border: none;
+  background-color: transparent;
 }
 
 .nav-link{

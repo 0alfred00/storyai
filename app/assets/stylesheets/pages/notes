@@ -1,0 +1,11 @@
+<!-- <li class="nav-item">
+            <%= link_to stories_history_path, class: "navbar-icon" do %>
+              <i class="fa-solid fa-clock-rotate-left m-2 fs-3" style="color:#F8FBFC;"></i>
+                <% end%>
+            <%= link_to favorites_path, class: "navbar-icon" do %>
+              <i class="fa-solid fa-heart m-2 fs-3" style="color:#F8FBFC;"></i>
+              <% end%>
+            <%= link_to favorites_path, class: "navbar-icon" do %>
+              <span><i class="fa-regular fa-user m-2 fs-3" style="color:#F8FBFC;"></i></span>
+              <% end%>
+          </li> -->
