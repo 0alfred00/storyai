@@ -19,14 +19,16 @@ end
 
 # Seed Stories
 users = User.all
+age_groups = ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"]
+genres = ["Educational", "Adventurous", "Mystery", "Fairytale"]
 users.each do |user|
   3.times do
     prompt = Prompt.create!(
       language: "German",
       length: rand(250..500),
       user_input: Faker::Lorem.sentence(word_count: 10),
-      age_group: Faker::Number.between(from: 1, to: 18),
-      genre: Faker::Book.genre,
+      age_group: age_groups.sample,
+      genre: genres.sample,
       user_id: user.id,
       created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
     )

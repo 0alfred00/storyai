@@ -1,14 +1,19 @@
 <!-- app/views/openai/index.html.erb -->
 <%= form_with url: openai_path do |form| %>
-  <%= form.label :prompt %>
-  <%= form.text_field :prompt %>
+  <%= form.label :user_input %>
+  <%= form.text_field :user_input %>
+  <%= form.label :language %>
+  <%= form.select :language, %w(English Spanish German French) %>
+  <%= form.label :length %>
+  <%= form.text_field :length %>
+  <%= form.label :genre %>
+  <%= form.select :genre, %w(Educational Adventurous Mystery Fairytale) %>
+  <%= form.label :age_group %>
+  <%= form.select :age_group, ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"] %>
   <%= form.submit "Ask" %>
 <% end %>
 <br>
-<% if @user_input %>
-  <p>Prompt: <%= @user_input %></p>
-<% end %>
+<p>Last Story: <%= Story.last.body %></p>
 <br>
-<% if @response_text %>
-  <p>Response: <%= @response_text %></p>
-<% end %>
+<br>
+<p>Last Prompt: <%= Prompt.last.user_input %></p>

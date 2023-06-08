@@ -1,0 +1,37 @@
+.prompt{
+  background-color:$sign-up;
+  justify-content: center center;
+  width: 1137px;
+  height: 250px;
+  border-radius: 30px;
+  position: relative;
+  font-size: 20px;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ }
+
+.enter-create{
+  display: flex;
+  justify-content: center;
+  color: $card-description;
+  border-radius: 30px;
+  padding: 50px 0;
+  font-weight: 500;
+  position: relative;
+  font-family: serif;
+  text-align: left;
+  font-size: 20px;
+  margin-right: 2rem;
+  align-items: center;
+}
+.text-container{
+  height: 130px;
+  width: 950px;
+  background-color:white;
+  border-radius: 30px;
+  margin-left: 15px;
+}
+
+.text-container p {
+  margin: 20px 0 0 20px
+}
