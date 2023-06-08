@@ -34,7 +34,7 @@ class StoriesController < ApplicationController
     new_story.save
 
     # redirect to story show page
-    redirect_to story_path(new_story)
+    redirect_to stories_path(new_story)
   end
 
   def build_prompt(user_input, length, language, genre)

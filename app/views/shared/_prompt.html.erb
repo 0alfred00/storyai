@@ -1,8 +1,20 @@
-<div class="prompt container">
-  <div class="enter-create">
-    <div class="text-container"><p>hello</p></div>
-    <div class="create-btn"><p>Create</p></div>
-  </div>
-    <div class="d-flex justify-content-center">
+<div class="container">
+  <div class="prompt">
+    <%= form_with url: stories_path do |form| %>
+    <div class="enter-create">
+      <%= form.text_field :user_input, class:'text-container' %>
+        <%= form.submit "Create", class:'create-btn'%>
+    </div>
+    <div>
+      <%= form.label :language %>
+      <%= form.select :language, %w(English Spanish German French) %>
+      <%= form.label :length %>
+      <%= form.text_field :length %>
+      <%= form.label :genre %>
+      <%= form.select :genre, %w(Educational Adventurous Mystery Fairytale) %>
+      <%= form.label :age_group %>
+      <%= form.select :age_group, ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"] %>
+    </div>
+    <% end %>
   </div>
 </div>
