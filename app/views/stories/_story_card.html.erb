@@ -2,13 +2,13 @@
   <img src="https://images.unsplash.com/photo-1536323760109-ca8c07450053" alt="Storypic" style="width:100%">
   <div class="card-container">
     <div class="main-container">
-      <div class="hearts-count">9888 saves</div>
+      <div class="hearts-count">9888  <i class="fa-solid fa-heart"></i></i></div>
       <div class="card-title"> <%= story.title %></div>
       <div class="card-description"><%= story.summary %></div>
     </div>
     <div class="details-container">
       <div class="words-count">1000 words (20mins)</div>
-      <div class="created-year"><%= story.created_at %></div>
+      <div class="created-year"><%= story.created_at.year %></div>
     </div>
   </div>
 </div>
