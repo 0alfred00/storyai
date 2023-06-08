@@ -1,17 +1,15 @@
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "testlogo.jpg" %>
     <% end %>
-    <div class="d-flex align-items-center">
-      <div class="search-bar m-3">search</div>
-      <span><i class="fa-solid fa-magnifying-glass"></i></span>
-    </div>
-    <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <form class="d-flex align-items-center">
+    <input type="text" placeholder="" class="search-bar m-3">
+      <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+    <%# <% <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span> %>
-    <%# </button> %>
-
-
+    <%#</button> %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
@@ -21,18 +19,15 @@
           <li class="nav-item">
             <%= link_to stories_history_path, class: "navbar-icon" do %>
               <i class="fa-solid fa-clock-rotate-left m-2 fs-3" style="color:#F8FBFC;"></i>
-                <% end%>
+            <% end%>
+          </li>
+          <li class="nav-item">
             <%= link_to favorites_path, class: "navbar-icon" do %>
               <i class="fa-solid fa-heart m-2 fs-3" style="color:#F8FBFC;"></i>
-              <% end%>
-            <%= link_to favorites_path, class: "navbar-icon" do %>
-              <span><i class="fa-regular fa-user m-2 fs-3" style="color:#F8FBFC;"></i></span>
-              <% end%>
+            <% end%>
           </li>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
+            <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-regular fa-user m-2 fs-3" style="color:#F8FBFC;"></i></span>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>
