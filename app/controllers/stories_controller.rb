@@ -14,12 +14,32 @@ class StoriesController < ApplicationController
     @stories = Story.where(prompt: prompts)
   end
 
-  def create
-    # create the final prompt to be sent to api
-    @prompt = build_prompt(params[:user_input], params[:length], params[:language], params[:genre], params[:reference_story_id])
+  # def update
+  #   @story = Story.find(params[:id])
+  #   if @story.public
+  #     @story.update(public: false)
+  #   else
+  #     @story.update(public: true)
+  #   end
+  # end
 
-    # create prompt
-    new_prompt = Prompt.create(language: params[:language], length: params[:length], user_input: params[:user_input], age_group: params[:age_group], genre: params[:genre], user_id: current_user.id, reference_story_id: params[:reference_story_id])
+  def update
+    @story = Story.find(params[:id])
+    @story.update(public: !@story.public)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def create
+    # create the final prompt string to be sent to api
+    check_prompt_input(params[:user_input], params[:length], params[:language], params[:genre], params[:age_group])
+    @prompt = build_prompt(@user_input, @length, @language, @genre, params[:reference_story_id])
+
+
+    # save prompt data to database
+    new_prompt = Prompt.create(language: @language, length: @length, user_input: @user_input, age_group: @age_group, genre: @genre, user_id: current_user.id, reference_story_id: params[:reference_story_id])
+
     new_prompt.save
 
     # send prompt to api and receive response
@@ -30,18 +50,20 @@ class StoriesController < ApplicationController
     else
       @response = JSON.parse(response_string)
 
-      # create story
+      # create and save story
       new_story = Story.create(title: @response["title"], body: @response["body"], summary: @response["summary"], follow_up_summary: @response["follow_up_summary"], public: true, prompt_id: new_prompt.id)
       new_story.save
+
       # redirect to story show page
       redirect_to story_path(new_story)
     end
   end
 
-  def build_prompt(user_input, length, language, genre, reference_story_id)
-    # this is the prompt with interpolated variables
-    # it either runs the initial prompt or the follow up prompt based on whether there is a reference story
+  private
 
+  # this is the prompt with interpolated variables
+  # it either runs the initial prompt or the follow up prompt based on whether there is a reference story
+  def build_prompt(user_input, length, language, genre, reference_story_id)
     if reference_story_id
       follow_up_summary = Story.find(reference_story_id).follow_up_summary
       "You are a world class author for children's bedtime stories. You will create a sequel bedtime story that adheres to the best practices of storytelling and following the hero’s journey while being appropriate for children. The story is later read by parents to their children before they go to bed.
@@ -93,5 +115,20 @@ class StoriesController < ApplicationController
       The body key should contain the whole content of the story, the title the title of the story, the summary a one liner summary of the story and the follow_up_summary a paragraph summary of the story. The response should be a json and json only!
       "
     end
+  end
+
+  # check what the user is prompting, if they forgot to fill out all form fields
+  # default data is applied
+  def check_prompt_input(user_input, length, language, genre, age_group)
+    @user_input = user_input.presence || "bird and cat become friends"
+    @length = length.presence || "500"
+    @language = (language == "Language") ? "English" : language
+    @genre = (genre == "Genre") ? "Fairytale" : genre
+    @age_group = (age_group == "Age Group") ? "Toddler" : age_group
+  end
+
+
+  def story_params
+    params.require(:story).permit(:public)
   end
 end

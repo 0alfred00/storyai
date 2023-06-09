@@ -8,13 +8,27 @@
     <div class="details-container">
       <div class="words-count"><%= story.prompt.length.to_i / 130 %> mins</div>
       <div class="heart-container">
-        <div class="hearts-count"><%= story.favorites.count %>&ensp;</div>
-        <div>
+      <div class="hearts-count"><%= story.favorites.count %>&ensp;</div>
+      <div>
         <% favorite = current_user.favorites.find_by(story: story) %>
         <div data-controller="favorite">
           <%= render "shared/favorite_icon", favorite: favorite, story: story %>
         </div>
         </div>
+      <% if current_user %>
+        <% if story.prompt.user_id == current_user.id %>
+          <%= form_for story, remote: true, html: { id: "story-#{story.id}" } do |f| %>
+            <%= f.hidden_field :public %>
+            <% if story.public %>
+              <%= button_tag(type: 'submit', class: "card-public fa-solid fa-lock-open") do %>
+              <% end %>
+            <% else %>
+              <%= button_tag(type: 'submit', class: "card-public fa-solid fa-lock") do %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
