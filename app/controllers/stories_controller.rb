@@ -32,10 +32,10 @@ class StoriesController < ApplicationController
   end
 
   def create
-    # create the final prompt to be sent to api
+    # create the final prompt string to be sent to api
     @prompt = build_prompt(params[:user_input], params[:length], params[:language], params[:genre], params[:reference_story_id])
 
-    # create prompt
+    # save prompt data to database
     new_prompt = Prompt.create(language: params[:language], length: params[:length], user_input: params[:user_input], age_group: params[:age_group], genre: params[:genre], user_id: current_user.id, reference_story_id: params[:reference_story_id])
     new_prompt.save
 
@@ -47,9 +47,10 @@ class StoriesController < ApplicationController
     else
       @response = JSON.parse(response_string)
 
-      # create story
+      # create and save story
       new_story = Story.create(title: @response["title"], body: @response["body"], summary: @response["summary"], follow_up_summary: @response["follow_up_summary"], public: true, prompt_id: new_prompt.id)
       new_story.save
+
       # redirect to story show page
       redirect_to story_path(new_story)
     end
