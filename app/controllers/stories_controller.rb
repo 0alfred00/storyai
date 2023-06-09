@@ -14,6 +14,23 @@ class StoriesController < ApplicationController
     @stories = Story.where(prompt: prompts)
   end
 
+  # def update
+  #   @story = Story.find(params[:id])
+  #   if @story.public
+  #     @story.update(public: false)
+  #   else
+  #     @story.update(public: true)
+  #   end
+  # end
+
+  def update
+    @story = Story.find(params[:id])
+    @story.update(public: !@story.public)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     # create the final prompt to be sent to api
     @prompt = build_prompt(params[:user_input], params[:length], params[:language], params[:genre], params[:reference_story_id])
@@ -93,5 +110,11 @@ class StoriesController < ApplicationController
       The body key should contain the whole content of the story, the title the title of the story, the summary a one liner summary of the story and the follow_up_summary a paragraph summary of the story. The response should be a json and json only!
       "
     end
+  end
+
+  private
+
+  def story_params
+    params.require(:story).permit(:public)
   end
 end
