@@ -1,12 +1,9 @@
 .prompt{
   background-color:$sign-up;
-  justify-content: center center;
-  width: 1137px;
   height: 250px;
+  width: 100%;
   border-radius: 30px;
-  position: relative;
   font-size: 20px;
-  align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   display: inline-block;
  }
@@ -27,10 +24,11 @@
 }
 .text-container{
   height: 130px;
-  width: 950px;
+  width: 75%;
   background-color:white;
   border-radius: 30px;
   border:none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .text-container p {
@@ -40,4 +38,7 @@
 .navbar-lewagon .navbar-brand p {
   width: 50px;
   border-radius: 30%;
+}
+.story-font{
+  font-family:'Times New Roman', Times, serif;
 }

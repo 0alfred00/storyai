@@ -5,15 +5,11 @@
       <%= form.text_field :user_input, class:'text-container' %>
         <%= form.submit "Create", class:'create-btn'%>
     </div>
-    <div>
-      <%= form.label :language %>
-      <%= form.select :language, %w(English Spanish German French) %>
-      <%= form.label :length %>
-      <%= form.text_field :length %>
-      <%= form.label :genre %>
-      <%= form.select :genre, %w(Educational Adventurous Mystery Fairytale) %>
-      <%= form.label :age_group %>
-      <%= form.select :age_group, ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"] %>
+    <div class="filters">
+      <%= form.select :language, options_for_select(['Language'] + %w(English Spanish German French), prompt: 'Select Language'), { name: 'language' }, { class: 'filter-btn' } %>
+      <%= form.text_field :length, placeholder: 'Words', class:'filter-btn'%>
+      <%= form.select :genre, options_for_select(['Genre'] + %w(Educational Adventurous Mystery Fairytale), prompt: 'Select Genre'), { name: 'genre' }, { class: 'filter-btn' } %>
+      <%= form.select :age_group, ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"], { name: 'age_group' }, { class: 'filter-btn'} %>
       <% if @story %>
         <%=form.hidden_field :reference_story_id, value: @story.id %>
       <% end %>
