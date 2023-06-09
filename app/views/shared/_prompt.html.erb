@@ -7,7 +7,7 @@
     </div>
     <div class="filters">
       <%= form.select :language, options_for_select(['Language'] + %w(English Spanish German French), prompt: 'Select Language'), { name: 'language' }, { class: 'filter-btn' } %>
-      <%= form.text_field :length, placeholder: 'Words', class:'filter-btn'%>
+      <%= form.select :length, options_for_select(['Words'] + %w(200 400 800 1000), prompt: 'Select Length'), { name: 'length' }, { class:'filter-btn' }%>
       <%= form.select :genre, options_for_select(['Genre'] + %w(Educational Adventurous Mystery Fairytale), prompt: 'Select Genre'), { name: 'genre' }, { class: 'filter-btn' } %>
       <%= form.select :age_group, options_for_select(['Age Group'] + ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"], prompt: 'Select Age Group'), { name: 'age_group' }, { class: 'filter-btn' } %>
       <% if @story %>
