@@ -84,3 +84,4 @@ gem "open-uri"
 gem "cloudinary"
 gem "ruby-openai"
 gem "json"
+gem 'jquery-rails'

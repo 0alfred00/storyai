@@ -66,3 +66,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+.card-public {
+  font-size: 20px;
+  color: $card-details;
+  margin-left: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+}
