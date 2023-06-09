@@ -4,16 +4,16 @@
 require "faker"
 
 # Seed Users
-# 10.times do
-#   User.create!(
-#     email: Faker::Internet.email,
-#     # encrypted_password: Faker::Internet.password(min_length: 8),
-#     password: Faker::Internet.password(min_length: 8)
-#     # created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-#   )
-# end
+#  10.times do
+#    User.create!(
+#      email: Faker::Internet.email,
+#       encrypted_password: Faker::Internet.password(min_length: 8),
+#      password: Faker::Internet.password(min_length: 8)
+#       created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
+#    )
+#  end
 
-# # Seed Stories
+# # # Seed Stories
 users = User.all
 # age_groups = ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"]
 # genres = ["Educational", "Adventurous", "Mystery", "Fairytale"]
