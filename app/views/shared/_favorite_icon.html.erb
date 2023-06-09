@@ -1,0 +1,5 @@
+ <% if favorite.nil? %>
+  <%= link_to '<i class="card-heart-unliked fa-solid fa-heart"></i>'.html_safe, story_favorites_path(story), data: { turbo_method: :post, remote: true, type: :script, action: "ajax>success#favorite->fire" } %>
+<% else %>
+  <%= link_to '<i class="card-heart-liked fa-solid fa-heart"></i>'.html_safe, favorite_path(favorite), data: {turbo_method: :delete,  action: "click#favorite->fire"}  %>
+<% end %>

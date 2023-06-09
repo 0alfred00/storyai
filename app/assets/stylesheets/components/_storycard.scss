@@ -50,9 +50,19 @@
   font-weight: 400;
 }
 
-.card-heart {
+.card-heart-unliked {
   font-size: 20px;
   color: $card-details;
+  border: none;
+  outline: none;
+  background: none;
+  text-decoration: none;
+  fill: none;
+}
+
+.card-heart-liked {
+  font-size: 20px;
+  color: $heart-liked;
 }
 
 .words-count {
