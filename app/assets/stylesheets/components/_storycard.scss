@@ -5,7 +5,8 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
-  margin: 5px;
+  margin: 5px 0 5px 0;
+  justify-self: center;
 }
 
 /* Add rounded corners to the top left and the top right corner of the image */
@@ -23,6 +24,7 @@
   height: 43%;
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 .card-container a {
