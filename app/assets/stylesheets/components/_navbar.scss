@@ -1,7 +1,15 @@
+.navbar-container{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
 .navbar-lewagon {
   justify-content: space-between;
   background-color:#81B4BA;
   padding-right:25px;
+  width: 100%;
   // transition: background-color 0.5s;
 }
 // .navbar-lewagon:hover {
