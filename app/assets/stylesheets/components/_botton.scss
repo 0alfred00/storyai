@@ -39,10 +39,10 @@
   padding-left: 100px;
 }
 
-.signup-button {
+.signup-btn {
   font-size: 24px;
   padding: 20px 40px;
-  background-color: $create-btn;
+  background-color: $heart-liked;
   color: white;
   border: none;
   border-radius: 5px;
@@ -50,8 +50,8 @@
   text-decoration: none;
 }
 
-.signup-button:hover {
-  background-color: #1E5F66;
+.signup-btn:hover {
+  background-color: #b6565c;
   text-decoration: none;
   color: white;
 }

@@ -3,14 +3,7 @@
   <% if user_signed_in? %>
     <p>Start creating your own stories now!</p>
     <%= render "shared/prompt" %>
-  <% else %>
-    <p>Browse stories created by other users.</p>
-    <p>Sign up now to start creating your own stories!</p>
-    <br>
-    <%= link_to "Sign Up", new_user_registration_path, class: "signup-button" %>
-  <% end %>
-  </div>
-  <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
+    <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
     <div class="container p-0">
       <%= render "shared/category_card", genre: genre %>
       <div class="storycard-container">
@@ -20,3 +13,7 @@
         </div>
       </div>
   <% end %>
+  <% else %>
+    <%= render "shared/landing" %>
+  <% end %>
+  </div>
