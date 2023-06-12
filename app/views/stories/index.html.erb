@@ -1,7 +1,4 @@
-<div class="teaser">Welcome to Soozie!</div>
-<div class="teaser-description">
   <% if user_signed_in? %>
-    <p>Start creating your own stories now!</p>
     <% if params[:query].present? %>
       <div class="storycard-container">
         <% @stories.each do |story| %>
@@ -9,6 +6,8 @@
         <% end %>
       </div>
     <% else %>
+    <div class="teaser">Welcome to Soozie!</div>
+    <div class="teaser-description">Start creating your own stories now!</div>
       <%= render "shared/prompt" %>
         <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
       <div class="container p-0">
@@ -22,6 +21,6 @@
       <% end %>
     <% end %>
   <% else %>
+  <div class="teaser">Welcome to Soozie!</div>
     <%= render "shared/landing" %>
   <% end %>
- </div>
