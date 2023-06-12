@@ -56,6 +56,14 @@ class StoriesController < ApplicationController
 
       # redirect to story show page
       redirect_to story_path(new_story)
+
+      # create and save picture
+      create_and_save_picture(new_story)
+
+      # prompt_picture = build_prompt_picture(new_story.follow_up_summary)
+      # picture_url = OpenaiService.new(prompt_picture).create_picture
+      # new_story.photo.attach(io: URI.open(picture_url), filename: 'story_picture.png', content_type: 'image/png')
+      # new_story.save
     end
   end
 
@@ -127,8 +135,25 @@ class StoriesController < ApplicationController
     @age_group = (age_group == "Age Group") ? "Toddler" : age_group
   end
 
-
   def story_params
     params.require(:story).permit(:public)
   end
+
+  # def build_prompt_picture(prompt)
+  #   default = "Create a cover photo for a children's bedtime story. The style should be fantasy and based on the following summary: "
+  #   return default + prompt
+  # end
+
+  def create_and_save_picture(story)
+    prompt_picture = build_prompt_picture(story.follow_up_summary)
+    picture_url = OpenaiService.new(prompt_picture).create_picture
+    story.photo.attach(io: URI.open(picture_url), filename: 'story_picture.png', content_type: 'image/png')
+    story.save
+  end
+
+  def build_prompt_picture(prompt)
+    default = "Create a cover photo for a children's bedtime story. The style should be fantasy and based on the following summary: "
+    default + prompt
+  end
+
 end

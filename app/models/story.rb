@@ -3,4 +3,6 @@ class Story < ApplicationRecord
 
   has_many :favorites
   has_many :users, through: :favorites
+
+  has_one_attached :photo
 end
