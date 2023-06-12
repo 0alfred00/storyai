@@ -1,0 +1,61 @@
+// app/assets/stylesheets/home.scss
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.headline {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.subhead {
+  font-size: 24px;
+  text-align: center;
+}
+
+.hero-image {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.testimonials {
+  display: flex;
+  justify-content: space-between;
+}
+
+.testimonial {
+  width: calc(50% - 20px);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.testimonial-text {
+  font-size: 18px;
+}
+
+.testimonial-author {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cta-container {
+  text-align: center;
+}
+
+.cta-button {
+  font-size: 24px;
+}

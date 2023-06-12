@@ -3,7 +3,11 @@ class StoriesController < ApplicationController
   before_action :set_loading
 
   def index
-    @stories = Story.all
+    if params[:query].present?
+      @stories = Story.search_by_title_and_summary(params[:query])
+    else
+      @stories = Story.all
+    end
   end
 
   def show
@@ -36,12 +40,11 @@ class StoriesController < ApplicationController
     @loading = true
     # create the final prompt string to be sent to api
     check_prompt_input(params[:user_input], params[:length], params[:language], params[:genre], params[:age_group])
-    @prompt = build_prompt(@user_input, @length, @language, @genre, params[:reference_story_id])
+    @prompt = build_prompt(@user_input, @length, @language, @genre, params[:reference_story_id], @age_group)
 
 
     # save prompt data to database
     new_prompt = Prompt.create(language: @language, length: @length, user_input: @user_input, age_group: @age_group, genre: @genre, user_id: current_user.id, reference_story_id: params[:reference_story_id])
-
     new_prompt.save
 
     # send prompt to api and receive response
@@ -58,6 +61,14 @@ class StoriesController < ApplicationController
 
       # redirect to story show page
       redirect_to story_path(new_story)
+
+      # create and save picture
+      create_and_save_picture(new_story)
+
+      # prompt_picture = build_prompt_picture(new_story.follow_up_summary)
+      # picture_url = OpenaiService.new(prompt_picture).create_picture
+      # new_story.photo.attach(io: URI.open(picture_url), filename: 'story_picture.png', content_type: 'image/png')
+      # new_story.save
     end
   end
 
@@ -65,7 +76,7 @@ class StoriesController < ApplicationController
 
   # this is the prompt with interpolated variables
   # it either runs the initial prompt or the follow up prompt based on whether there is a reference story
-  def build_prompt(user_input, length, language, genre, reference_story_id)
+  def build_prompt(user_input, length, language, genre, reference_story_id, age_group)
     if reference_story_id
       follow_up_summary = Story.find(reference_story_id).follow_up_summary
       "You are a world class author for children's bedtime stories. You will create a sequel bedtime story that adheres to the best practices of storytelling and following the hero’s journey while being appropriate for children. The story is later read by parents to their children before they go to bed.
@@ -81,6 +92,7 @@ class StoriesController < ApplicationController
       - Length should be around #{length} words but must not be longer than #{length.to_i + 100} words.
       - Language of the story is #{language}
       - Genre is #{genre}
+      - Appropriate for children in the age group #{age_group}
 
       Restrictions:
       - The story has to be suited for children and must not contain inappropriate content like violence, drugs, murder, sex, nudity and swearing
@@ -104,6 +116,7 @@ class StoriesController < ApplicationController
       - Length should be around #{length} words but must not be longer than #{length.to_i + 100} words.
       - Language of the story is #{language}
       - Genre is #{genre}
+      - Appropriate for children in the age group #{age_group}
 
       Restrictions:
       - The story has to be suited for children and must not contain inappropriate content like violence, drugs, murder, sex, nudity and swearing
@@ -129,7 +142,6 @@ class StoriesController < ApplicationController
     @age_group = (age_group == "Age Group") ? "Toddler" : age_group
   end
 
-
   def story_params
     params.require(:story).permit(:public)
   end
@@ -137,4 +149,22 @@ class StoriesController < ApplicationController
   def set_loading
     @loading = false
   end
+
+  # def build_prompt_picture(prompt)
+  #   default = "Create a cover photo for a children's bedtime story. The style should be fantasy and based on the following summary: "
+  #   return default + prompt
+  # end
+
+  def create_and_save_picture(story)
+    prompt_picture = build_prompt_picture(story.follow_up_summary)
+    picture_url = OpenaiService.new(prompt_picture).create_picture
+    story.photo.attach(io: URI.open(picture_url), filename: 'story_picture.png', content_type: 'image/png')
+    story.save
+  end
+
+  def build_prompt_picture(prompt)
+    default = "Create a cover photo for a children's bedtime story. The style should be fantasy and based on the following summary: "
+    default + prompt
+  end
+
 end
