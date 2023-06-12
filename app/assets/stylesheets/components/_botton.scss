@@ -38,3 +38,20 @@
 .filters-btn > :first-child{
   padding-left: 100px;
 }
+
+.signup-button {
+  font-size: 24px;
+  padding: 20px 40px;
+  background-color: $create-btn;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.signup-button:hover {
+  background-color: #1E5F66;
+  text-decoration: none;
+  color: white;
+}

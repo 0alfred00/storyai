@@ -1,9 +1,15 @@
 <div class="teaser">Welcome to Soozie!</div>
 <div class="teaser-description">
-  Create bespoke bedtime stories to read to your children.
-  <br>Simply enter a prompt to create a story.
+  <% if user_signed_in? %>
+    <p>Start creating your own stories now!</p>
+    <%= render "shared/prompt" %>
+  <% else %>
+    <p>Browse stories created by other users.</p>
+    <p>Sign up now to start creating your own stories!</p>
+    <br>
+    <%= link_to "Sign Up", new_user_registration_path, class: "signup-button" %>
+  <% end %>
   </div>
-  <%= render "shared/prompt" %>
   <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
     <div class="container p-0">
       <%= render "shared/category_card", genre: genre %>
