@@ -10,7 +10,9 @@
       <div class="heart-container">
       <div class="hearts-count"><%= story.favorites.count %>&ensp;</div>
       <div>
+      <% if current_user %>
         <% favorite = current_user.favorites.find_by(story: story) %>
+        <% end %>
         <div data-controller="favorite">
           <%= render "shared/favorite_icon", favorite: favorite, story: story %>
         </div>
