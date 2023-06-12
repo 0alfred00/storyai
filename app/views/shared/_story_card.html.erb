@@ -1,5 +1,9 @@
 <div class="storycard">
-  <img src="https://images.unsplash.com/photo-1536323760109-ca8c07450053" alt="Storypic" style="width:100%">
+  <% if story.photo.key.nil? %>
+    <img src="https://images.unsplash.com/photo-1536323760109-ca8c07450053" alt="Storypic" style="width:100%">
+  <% else %>
+    <%= cl_image_tag story.photo.key, alt: "Story picture", crop: :fill %>
+  <% end %>
   <div class="card-container">
     <div class="main-container">
       <div class="card-title"> <%= story.title %></div>
@@ -10,7 +14,9 @@
       <div class="heart-container">
       <div class="hearts-count"><%= story.favorites.count %>&ensp;</div>
       <div>
-        <% favorite = current_user.favorites.find_by(story: story) %>
+        <% if current_user %>
+          <% favorite = current_user.favorites.find_by(story: story) %>
+        <% end %>
         <div data-controller="favorite">
           <%= render "shared/favorite_icon", favorite: favorite, story: story %>
         </div>
