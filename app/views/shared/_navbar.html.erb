@@ -1,12 +1,27 @@
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <%= link_to root_path, class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "new_logo.png" %>
+  <% end %>
+
+    <%# <form class="d-flex align-items-center">
+      <input type="text" placeholder="Search" class="search-bar m-3">
+      <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form> %>
+
+  <div class="d-flex align-items-center">
+    <%= form_with url: stories_path, method: :get, class: "d-flex search-field" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "search-input form-control rounded",
+        placeholder: "Search"
+      %>
+      <button class="search-button input-group-text border-0 bg-transparent">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     <% end %>
-    <form class="d-flex align-items-center">
-    <input type="text" placeholder="Search" class="search-bar m-3">
-    <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
+  </div>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
@@ -14,30 +29,32 @@
           </li>
           <li class="nav-item">
             <%= link_to root_path, class: "navbar-icon" do %>
-            <i class="fa-solid fa-plus m-2 fs-3" style="color:#F8FBFC;"></i>
-            <% end%>
+              <i class="fa-solid fa-plus m-2 fs-3" style="color:#F8FBFC;"></i>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to history_stories_path, class: "navbar-icon" do %>
               <i class="fa-solid fa-clock-rotate-left m-2 fs-3" style="color:#F8FBFC;"></i>
-            <% end%>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to favorites_path, class: "navbar-icon" do %>
             <i class="fa-solid fa-heart m-2 fs-3" style="color:#F8FBFC;"></i>
-            <% end%>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-regular fa-user m-2 fs-3" style="color:#F8FBFC;"></i></span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
           </div>
+          </li>
         <% else %>
         <div class="button">
             <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </li>
-          <% end %>
+        </div>
+        <% end %>
         </ul>
-      </div>
+    </div>
 </div>

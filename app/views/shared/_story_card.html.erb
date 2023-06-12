@@ -18,11 +18,11 @@
       <div>
       <% if current_user %>
         <% favorite = current_user.favorites.find_by(story: story) %>
-      <% end %>
-      <div data-controller="favorite">
-        <%= render "shared/favorite_icon", favorite: favorite, story: story %>
-      </div>
-    </div>
+        <% end %>
+        <div data-controller="favorite">
+          <%= render "shared/favorite_icon", favorite: favorite, story: story %>
+        </div>
+        </div>
       <% if current_user %>
         <% if story.prompt.user_id == current_user.id %>
           <%= form_for story, remote: true, html: { id: "story-#{story.id}" } do |f| %>

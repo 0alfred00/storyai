@@ -2,7 +2,11 @@ class StoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @stories = Story.all
+    if params[:query].present?
+      @stories = Story.search_by_title_and_summary(params[:query])
+    else
+      @stories = Story.all
+    end
   end
 
   def show
