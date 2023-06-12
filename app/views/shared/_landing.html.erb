@@ -1,0 +1,21 @@
+<!-- app/views/shared/landing.html.erb -->
+
+<div class="container">
+  <h1 class="headline">Create bespoke bedtime stories.</h1>
+  <p class="subhead">Soozie helps busy parents create personalized bedtime stories for their children in seconds.</p>
+  <%# <%= image_tag "hero.png", alt: "Hero image", class: "hero-image" %>
+  <h2 class="section-title">Trusted by parents everywhere</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <p class="testimonial-text">"Soozie has been a lifesaver for me. As a busy working mom, I don't always have time to come up with new bedtime stories for my kids. Soozie makes it easy to create personalized stories that my kids love."</p>
+      <p class="testimonial-author">- Jane, mother of two</p>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-text">"I love using Soozie to create bedtime stories for my son. The stories are always unique and engaging, and it's so easy to use. I highly recommend it to any parent!"</p>
+      <p class="testimonial-author">- John, father of one</p>
+    </div>
+  </div>
+  <div class="cta-container">
+    <%= link_to "Sign Up Now", new_user_registration_path, class: "" %>
+  </div>
+</div>
