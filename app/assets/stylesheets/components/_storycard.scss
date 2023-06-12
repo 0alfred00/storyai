@@ -1,7 +1,7 @@
 .storycard {
   background-color: $card;
   width: 270px;
-  height: 285px;
+  height: 385px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
@@ -13,14 +13,14 @@
   border-radius: 5px 5px 0 0;
   object-fit: cover;
   width: 100%;
-  height: 44%;
+  height: 57%;
 
 }
 
 .card-container {
   padding: 20px;
   display: flex;
-  height: 56%;
+  height: 43%;
   flex-direction: column;
   justify-content: space-between;
 }
