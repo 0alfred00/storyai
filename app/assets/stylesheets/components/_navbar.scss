@@ -8,7 +8,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color:#81B4BA;
-  padding-right:25px;
+  padding:0 55px 0 55px;
   width: 100%;
   // transition: background-color 0.5s;
 }
@@ -22,8 +22,9 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 50px;
-  margin-left: 25px;
   border-radius: 50%;
+  width: 35px;
+  height: 35px;
 }
 
 .search-bar{
@@ -31,15 +32,30 @@
   background-color: #ffffff;
   text-align: center;
   border-radius: 12px;
-  width: 200px;
   height: 30px;
   box-sizing: border-box;
   box-shadow:  0 1px 5px 0;
   cursor: pointer;
 }
+
+.navbar-center {
+  position: fixed;
+  left: 37.96%;
+
+}
 .search-button{
   border: none;
   background-color: transparent;
+}
+
+.search-input {
+  border-radius: 30px;
+  height: 30px;
+  width: 30vw;
+}
+
+.magnifying {
+  color: $card-description;
 }
 
 .nav-link{
@@ -55,4 +71,17 @@
 .navbar-icon {
   color:$icons;
   text-decoration: none;
+}
+
+
+@media(max-width: 992px) {
+  .navbar-center {
+    width: 45vw;
+  }
+}
+
+@media(max-width: 768px) {
+  .navbar-center {
+    width: 45vw;
+  }
 }
