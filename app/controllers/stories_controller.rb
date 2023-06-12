@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :set_loading
 
   def index
     if params[:query].present?
@@ -36,6 +37,7 @@ class StoriesController < ApplicationController
   end
 
   def create
+    @loading = true
     # create the final prompt string to be sent to api
     check_prompt_input(params[:user_input], params[:length], params[:language], params[:genre], params[:age_group])
     @prompt = build_prompt(@user_input, @length, @language, @genre, params[:reference_story_id], @age_group)
@@ -142,6 +144,10 @@ class StoriesController < ApplicationController
 
   def story_params
     params.require(:story).permit(:public)
+  end
+
+  def set_loading
+    @loading = false
   end
 
   # def build_prompt_picture(prompt)

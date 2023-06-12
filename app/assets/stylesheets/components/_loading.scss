@@ -1,0 +1,93 @@
+// #loading {
+//   background-color:$sign-up;
+//   height: 100%;
+//   width: 100%;
+//   // background-image: asset-url('logo.png');
+//   background-size: cover;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   color:$icons;
+//   font-size: 24px;
+//   font-weight: bold;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+//   border-radius: 5px;
+//   text-align: center;
+// }
+
+// #loading {
+//   display: inline-block;
+//   width: 50px;
+//   height: 50px;
+//   border: 3px solid rgba(255,255,255,.3);
+//   border-radius: 50%;
+//   border-top-color: #fff;
+//   animation: spin 1s ease-in-out infinite;
+//   -webkit-animation: spin 1s ease-in-out infinite;
+// }
+
+// @keyframes spin {
+//   to { -webkit-transform: rotate(360deg); }
+// }
+// @-webkit-keyframes spin {
+//   to { -webkit-transform: rotate(360deg); }
+// }
+
+.teaser-loading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $headers-font;
+  color: $icons;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+
+#loading {
+  $colors: #F0F6F7,#F8FBFC, #ABCBCC, #81B4BA,#374351;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .dot {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    margin: 0.8em;
+    border-radius: 50%;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: inherit;
+      animation: wave 2s ease-out infinite;
+    }
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        background: nth($colors, $i);
+
+        &::before {
+          animation-delay: $i * 0.2s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes wave {
+  50%,
+  75% {
+    transform: scale(2.5);
+  }
+
+  80%,
+  100% {
+    opacity: 0;
+  }
+}
