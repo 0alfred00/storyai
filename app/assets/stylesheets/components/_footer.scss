@@ -4,9 +4,16 @@
   align-items: center;
   padding: 0 0 0 15px;
 }
+
+.logo-soozie{
+  text-decoration: none;
+  color: #F8FBFC;
+  align-items: center;
+  padding: 0;
+}
 .bg-color{
-  background-color: #81B4BA;
-  height: 4rem;
+  background-color: $navbar-bg;
+  //height: 35px;
 }
 .footer-pos{
   display: flex;
