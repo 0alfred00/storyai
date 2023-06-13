@@ -11,14 +11,18 @@
 
   <div class="d-flex align-items-center navbar-center">
     <%= form_with url: stories_path, method: :get, class: "d-flex search-field" do %>
+    <div class="input-group">
       <%= text_field_tag :query,
         params[:query],
-        class: "search-input form-control",
+        class: "search-input form-control input-field 👌",
         placeholder: "Search"
       %>
-      <button class="search-button input-group-text border-0 bg-transparent">
-        <i class="magnifying fa-solid fa-magnifying-glass"></i>
-      </button>
+      <div class="input-group-append">
+        <button class="search-button input-group-text border-0 bg-transparent">
+          <i class="magnifying fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
     <% end %>
   </div>
 
