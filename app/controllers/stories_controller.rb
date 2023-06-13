@@ -136,7 +136,7 @@ class StoriesController < ApplicationController
   # default data is applied
   def check_prompt_input(user_input, length, language, genre, age_group)
     @user_input = user_input.presence || "bird and cat become friends"
-    @length = length.presence || "500"
+    @length = length.presence || "800"
     @language = (language == "Language") ? "English" : language
     @genre = (genre == "Genre") ? "Fairytale" : genre
     @age_group = (age_group == "Age Group") ? "Toddler" : age_group
