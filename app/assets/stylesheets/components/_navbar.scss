@@ -23,8 +23,8 @@
 .navbar-lewagon .navbar-brand img {
   width: 50px;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
 }
 
 .search-bar{
@@ -32,7 +32,7 @@
   background-color: #ffffff;
   text-align: center;
   border-radius: 12px;
-  height: 30px;
+  height: 50px;
   box-sizing: border-box;
   box-shadow:  0 1px 5px 0;
   cursor: pointer;
@@ -78,12 +78,13 @@
   text-align: center;
   padding-top: 3px;
   width: 100px;
-  height: 30px;
+  height: 50px;
 }
 
 .navbar-icon {
   color:$icons;
   text-decoration: none;
+  height: 50px;
 }
 
 
