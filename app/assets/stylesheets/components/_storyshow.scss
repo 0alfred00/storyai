@@ -30,6 +30,13 @@
       margin-bottom: 10px;
     }
   }
+  .story-content p::first-letter {
+    font-size: 60px;
+    font-family:$story-first-letter-font;
+    // font-weight: bold;
+    // float: left;
+    line-height: 0;
+  }
 }
 
 .story-title {

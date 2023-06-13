@@ -37,7 +37,7 @@
 }
 
 .text-container::placeholder {
-  font-family: Helvetica, sans-serif;
+  font-family: $body-font;
   color: $create-btn;
   opacity: 60%;
 }
@@ -46,7 +46,7 @@
   box-shadow: none !important;
 }
 .custom-font {
-  font-family: Helvetica, sans-serif;
+  font-family: $body-font;
   color:$create-btn;
   text-decoration: none;
   /* Additional styles can be added */
