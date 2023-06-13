@@ -14,7 +14,7 @@
     <div data-loading-target="createForm" style="display: block">
       <%= form_with url: stories_path, id: 'story-form' do |form| %>
         <div class="enter-create">
-          <%= form.text_field :user_input, class: 'text-container no-outline', placeholder: 'For example, "The Quest of the Eli"' %>
+          <%= form.text_field :user_input, class: 'text-container no-outline', placeholder: 'For example, "The Quest of Eli"' %>
           <%= form.submit "Create\nYour Story", class: 'create-btn', data: { action: "click->loading#showLoading" }, style: "white-space: pre-wrap" %>
         </div>
         <div class="filters">
