@@ -18,7 +18,6 @@
   padding: 24px;
   font-weight: 500;
   position: relative;
-  font-family: serif;
   text-align: left;
   font-size: 20px;
   align-items: center;
@@ -59,5 +58,5 @@
   border-radius: 30%;
 }
 .story-font{
-  font-family:'Times New Roman', Times, serif;
+  font-family:$story-font;
 }

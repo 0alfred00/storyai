@@ -1,6 +1,6 @@
 .create-btn{
-  background-color: #374351;
-  color: #F8FBFC;
+  background-color:$create-btn;
+  color: $icons;
   width: 130px;
   height: 130px;
   border-radius: 15px;
@@ -24,7 +24,7 @@
   justify-content: space-around;
 }
 .filter-btn{
-  font-family: Helvetica, sans-serif;
+  font-family:$body-font;
   width: 136px;
   background-color:white;
   text-decoration: none;
