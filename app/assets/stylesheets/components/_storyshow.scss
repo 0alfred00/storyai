@@ -20,4 +20,11 @@
       margin-bottom: 10px;
     }
   }
+  .story-content p::first-letter {
+    font-size: 60px;
+    font-family:"dancing script", cursive;
+    // font-weight: bold;
+    // float: left;
+    line-height: 0;
+  }
 }
