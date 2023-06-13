@@ -8,7 +8,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color:#81B4BA;
-  padding:0 55px 0 55px;
+  padding:16px 55px 16px 55px;
   width: 100%;
   // transition: background-color 0.5s;
 }
@@ -44,8 +44,20 @@
 
 }
 .search-button{
+  background-color: white;
+  box-shadow: none;
+  margin-top: 1px;
+}
+
+.input-field {
   border: none;
-  background-color: transparent;
+  padding: 6px 12px 10px 12px;
+}
+
+.input-group-append {
+  background-color: white;
+  border-radius: 30px;
+
 }
 
 .search-input {
@@ -56,6 +68,7 @@
 
 .magnifying {
   color: $card-description;
+  background-color: white;
 }
 
 .nav-link{

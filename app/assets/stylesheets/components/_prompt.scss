@@ -7,7 +7,9 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   display: inline-block;
  }
-
+.contenedor{
+  padding: 0;
+}
 .enter-create{
   display: flex;
   justify-content: center;
@@ -20,7 +22,7 @@
   text-align: left;
   font-size: 20px;
   align-items: center;
-  gap: 55px;
+  gap: 50px;
 }
 .text-container{
   height: 130px;
