@@ -2,7 +2,7 @@
   background-color:$sign-up;
   height: 250px;
   width: 100%;
-  border-radius: 30px;
+  border-radius: 15px;
   font-size: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   display: inline-block;
@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   color: $card-description;
-  border-radius: 30px;
+  border-radius: 15px;
   padding: 24px;
   font-weight: 500;
   position: relative;
@@ -25,14 +25,31 @@
 .text-container{
   height: 130px;
   width: 75%;
+  padding: 25px;
   background-color:white;
-  border-radius: 30px;
+  border-radius: 15px;
   border:none;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .text-container p {
   margin: 20px 0 0 20px
+}
+
+.text-container::placeholder {
+  font-family: Helvetica, sans-serif;
+  color: $create-btn;
+  opacity: 60%;
+}
+.no-outline {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.custom-font {
+  font-family: Helvetica, sans-serif;
+  color:$create-btn;
+  text-decoration: none;
+  /* Additional styles can be added */
 }
 
 .navbar-lewagon .navbar-brand p {
