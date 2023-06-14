@@ -14,18 +14,25 @@
     <div data-loading-target="createForm" style="display: block">
       <%= form_with url: stories_path, id: 'story-form' do |form| %>
         <div class="enter-create">
-          <%= form.text_field :user_input, class: 'text-container no-outline', placeholder: (@story ? 'For example, The Main Character...' : 'For example, "The Quest of Eli"') %>
-          <%= form.submit (@story ? "Continue Your Story" : "Create Your Story"), class: 'create-btn', data: { action: "click->loading#showLoading" }, style: "white-space: pre-wrap" %>
-        </div>
-        <div class="filters">
-          <%= form.select :language, options_for_select(['Language'] + %w(English Spanish German French), prompt: 'Select Language'), { name: 'language' }, { class: 'filter-btn custom-font no-outline' } %>
-          <%= form.select :length, options_for_select(['Words'] + %w(200 400 800 1000), prompt: 'Select Length'), { name: 'length' }, { class: 'filter-btn custom-font no-outline' } %>
-          <%= form.select :genre, options_for_select(['Genre'] + %w(Educational Adventurous Mystery Fairytale), prompt: 'Select Genre'), { name: 'genre' }, { class: 'filter-btn custom-font no-outline' } %>
-          <%= form.select :age_group, options_for_select(['Age Group'] + ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"], prompt: 'Select Age Group'), { name: 'age_group' }, { class: 'filter-btn custom-font no-outline' } %>
-          <% if @story %>
-            <%= form.hidden_field :reference_story_id, value: @story.id %>
-          <% end %>
-        </div>
+          <div class="prompt-wrapper">
+            <%= form.text_field :user_input, class: 'text-container no-outline', placeholder: (@story ? 'For example, The Main Character...' : 'For example, "The Quest of Eli"') %>
+            <div class="filters">
+              <%= form.select :language, options_for_select(['Language'] + %w(English Spanish German French), prompt: 'Select Language'), { name: 'language' }, { class: 'filter-btn custom-font no-outline' } %>
+              <%= form.select :length, options_for_select(['Words'] + %w(200 400 800 1000), prompt: 'Select Length'), { name: 'length' }, { class: 'filter-btn custom-font no-outline' } %>
+              <%= form.select :genre, options_for_select(['Genre'] + %w(Educational Adventurous Mystery Fairytale), prompt: 'Select Genre'), { name: 'genre' }, { class: 'filter-btn custom-font no-outline' } %>
+              <%= form.select :age_group, options_for_select(['Age Group'] + ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"], prompt: 'Select Age Group'), { name: 'age_group' }, { class: 'filter-btn custom-font no-outline' } %>
+              <% if @story %>
+                <%= form.hidden_field :reference_story_id, value: @story.id %>
+              <% end %>
+            </div>
+          </div>
+          <div class="book-container">
+            <div class="book-back">
+              <div class="pages">
+                <%= form.submit (@story ? "Continue\nYour\nStory" : "Create\nYour\nStory"), class: 'create-btn', data: { action: "click->loading#showLoading" }, style: "white-space: pre-wrap" %>
+              </div>
+            </div>
+          </div>
       <% end %>
     </div>
   </div>
