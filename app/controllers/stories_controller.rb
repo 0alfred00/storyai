@@ -12,6 +12,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @reference_story = @story.prompt.reference_story if @story.prompt.reference_story
   end
 
   def history
