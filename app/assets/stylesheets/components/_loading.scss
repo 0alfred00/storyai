@@ -204,13 +204,14 @@
 @keyframes flashlight {
   0%, 9% {
     opacity: 0;
-    clip-path: circle(150px at 45% 10%);
+    clip-path: circle(150px at 10% 95%);
   }
-  10%, 15%, 85% {
+  85%, 55%, 10% {
     opacity: 1;
   }
+
   50% {
-    clip-path: circle(150px at 60% 20%);
+    clip-path: circle(150px at 90% 20%);
   }
   54%, 100% {
     clip-path: circle(150px at 55% 92%);
