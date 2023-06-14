@@ -32,11 +32,12 @@
 }
 
 .card-title {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 500;
   color: $prompt-text;
   text-align: left;
   text-decoration: none;
+  font-family: $headers-font;
 }
 
 .card-description {
@@ -44,6 +45,7 @@
   color: $prompt-text;
   text-align: left;
   overflow: hidden;
+  font-family: $body-font;
 }
 
 .heart-container{
@@ -55,6 +57,7 @@
   color: $card-details;
   text-align: right;
   font-weight: 400;
+  font-family: $body-font;
 }
 
 .card-heart-unliked {
@@ -77,11 +80,13 @@
   color: $card-details;
   text-align: left;
   font-weight: 400;
+  font-family: $body-font;
 }
 
 .details-container {
   display: flex;
   justify-content: space-between;
+  font-family: $body-font;
 }
 
 .card-public {
