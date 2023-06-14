@@ -39,7 +39,7 @@
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 20px;
   margin-top: 20px;
 }
@@ -61,4 +61,23 @@
 
 .cta-button {
   font-size: 24px;
+}
+
+.gradient-background {
+  background: linear-gradient(100deg,#94cfa1,#79dfff,#52c4af);
+  // background: linear-gradient(100deg,$page-bg,$navbar-bg,$card);
+  background-size: 180% 180%;
+  animation: gradient-animation 9s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

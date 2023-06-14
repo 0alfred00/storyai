@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: "stories#index"
+  root to: "pages#home"
 
   resources :stories, only: [:index, :show, :create, :new, :update] do
     get :history, on: :collection
     resources :favorites, only: [:create]
   end
   resources :favorites, only: [:index, :destroy]
+
+  # for testing openai
+  get '/openai', to: 'openai#index'
+  post '/openai', to: 'openai#create'
+
+  # old routes now deprecated
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -23,8 +29,4 @@ Rails.application.routes.draw do
   # delete '/favorites/:id', to: 'favorites#destroy'
   # post '/stories/:id', to: 'stories#create'
   # patch '/stories/:id', to: 'stories#update'
-
-  # # for testing openai
-  get '/openai', to: 'openai#index'
-  post '/openai', to: 'openai#create'
 end

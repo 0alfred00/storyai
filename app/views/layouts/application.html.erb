@@ -18,8 +18,8 @@
   <body>
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
-      <div class="content-container"><%= yield %></div>
-        <%= render "shared/flashes" %>
+      <%= yield %>
+      <%= render "shared/flashes" %>
       <div class="footer-container"><%= render "shared/footer" %></div>
     </div>
   </body>
