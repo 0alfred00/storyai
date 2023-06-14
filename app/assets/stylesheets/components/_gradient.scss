@@ -1,0 +1,25 @@
+.gradient-background {
+  background: linear-gradient(100deg,#cfc694,$page-bg,#ebb643);
+  // background: linear-gradient(100deg,$page-bg,$navbar-bg,$card);
+  background-size: 180% 180%;
+  animation: gradient-animation 9s ease infinite;
+}
+
+.gradient-background-prompt {
+  background: linear-gradient(100deg,#cec489,$page-bg,#3a9922);
+  // background: linear-gradient(100deg,$page-bg,$navbar-bg,$card);
+  background-size: 180% 180%;
+  animation: gradient-animation 9s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
