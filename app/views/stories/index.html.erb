@@ -10,7 +10,7 @@
   <div class="teaser-description">Start creating your own stories now!</div> %>
     <%= render "shared/prompt" %>
       <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
-    <div class="container p-0">
+    <div class="container">
       <%= render "shared/category_card", genre: genre %>
       <div class="storycard-container">
         <% Story.joins(:prompt, :favorites).where(prompts: {genre: genre}).group(:id).order("COUNT(favorites.id) DESC").first(3).each do |story| %>
