@@ -87,5 +87,5 @@ gem "cloudinary"
 gem "ruby-openai"
 gem "json"
 gem 'jquery-rails'
-gem 'sidekiq'
+gem 'sidekiq', '~> 6.0'
 gem 'redis'
