@@ -1,5 +1,6 @@
 $redis = Redis.new
 url = ENV["REDISCLOUD_URL"]
+Rails.logger.info "Redis URL: #{url}"
 
 if url
   Sidekiq.configure_server do |config|
