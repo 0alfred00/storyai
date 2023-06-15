@@ -3,7 +3,7 @@
     <div data-loading-target="loading" style="display: none">
       <div>
         <div id="loading">
-            <div class="prompt">
+            <div class="prompt-loading">
               <div class="books"><p>loading</p></div>
             </div>
           <div>
@@ -13,7 +13,7 @@
     </div>
     <div data-loading-target="createForm" style="display: block">
       <%= form_with url: stories_path, id: 'story-form' do |form| %>
-        <div class="enter-create">
+        <div class="input-filters">
           <div class="prompt-wrapper">
             <%= form.text_field :user_input, class: 'text-container no-outline', placeholder: (@story ? 'For example, The Main Character...' : 'For example, "The Quest of Eli"') %>
             <div class="filters">
@@ -29,7 +29,7 @@
           <div class="book-container">
             <div class="book-back">
               <div class="pages">
-                <%= form.submit (@story ? "Continue\nYour\nStory" : "Create\nYour\nStory"), class: 'create-btn', data: { action: "click->loading#showLoading" }, style: "white-space: pre-wrap" %>
+                <%= form.submit (@story ? "Continue\nYour\nStory" : "Create\nYour\nStory"), class: 'book-cover', data: { action: "click->loading#showLoading" }, style: "white-space: pre-wrap" %>
               </div>
             </div>
           </div>
