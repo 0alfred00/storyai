@@ -1,8 +1,6 @@
 <div class="content-container">
+  <h1 class="headline"><%= @story.title %></h1>
   <div class="story-container">
-    <div class="story-title">
-      <h1><%= @story.title %></h1>
-    </div>
     <% if @story.prompt.reference_story %>
       <div class="story-content"><p>
         <%= @reference_story.body %>

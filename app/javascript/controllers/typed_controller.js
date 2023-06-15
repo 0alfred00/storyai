@@ -1,19 +1,32 @@
 import { Controller } from "@hotwired/stimulus"
 import Typed from "typed.js"
 
-// Connects to data-controller="typed"
-// export default class extends Controller {
-//   connect() {
-//   }
-// }
+// Typed.js for loading text animation
 
 export default class extends Controller {
   static values = {
-    sentences: Array
+    sentences: Array,
+    typeSpeed: Number,
+    backSpeed: Number,
+    shuffle: Boolean,
+    loop: Boolean
   }
 
   connect() {
-    const options = {strings: this.sentencesValue, typeSpeed: 0};
-    new Typed(this.element, options)
+
+    // Console logging for testing
+    console.log("Typed controller connected");
+
+    // Set the default values for the Typed.js options
+    const options = {
+      strings: this.sentencesValue,
+      typeSpeed: this.typeSpeedValue,
+      backSpeed: this.backSpeedValue,
+      shuffle: this.shuffleValue,
+      loop: this.loopValue
+    };
+
+    // Initialize Typed.js
+    new Typed(this.element, options);
   }
 }

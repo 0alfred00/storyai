@@ -1,10 +1,10 @@
 <div class="content-container contenedor">
-  <div class="prompt gradient-background-prompt" data-controller="loading">
+  <div class="prompt gradient-background-prompt">
     <div data-loading-target="loading" style="display: none">
       <div>
         <div id="loading">
             <div class="prompt">
-              <div class="books"><p>loading</p></div>
+              <div class="books"><p></p></div>
             </div>
           <div>
           </div>
@@ -15,7 +15,7 @@
       <%= form_with url: stories_path, id: 'story-form' do |form| %>
         <div class="enter-create">
           <%= form.text_field :user_input, class: 'text-container no-outline', placeholder: (@story ? 'For example, The Main Character...' : 'For example, "The Quest of Eli"') %>
-          <%= form.submit (@story ? "Continue Your Story" : "Create Your Story"), class: 'create-btn', data: { action: "click->loading#showLoading" }, style: "white-space: pre-wrap" %>
+          <%= form.submit (@story ? "Continue Your Story" : "Create Your Story"), class: 'create-btn', data: { action: "loading#showLoading" }, style: "white-space: pre-wrap" %>
         </div>
         <div class="filters">
           <%= form.select :language, options_for_select(['Language'] + %w(English Spanish German French), prompt: 'Select Language'), { name: 'language' }, { class: 'filter-btn custom-font no-outline' } %>
