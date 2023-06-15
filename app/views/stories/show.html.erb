@@ -20,5 +20,7 @@
       </div>
     <% end %>
   </div>
-  <%= render "shared/prompt_show" %>
+  <div data-controller="loading" data-loading-followup-value="<%= @story.id %>">
+    <%= render "shared/prompt" %>
+  </div>
 </div>

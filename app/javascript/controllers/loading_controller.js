@@ -3,15 +3,13 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="loading"
 export default class extends Controller {
-  static targets = ["loading","createForm", "createFormShow","recentcards","loadingcards","loadedcards","link"]
+  static targets = ["linknextchapter", "loadingprompt", "loadedprompt", "loading", "createForm", "createFormShow","recentcards","loadingcards","loadedcards","link"]
+  static values = {
+    followup: String
+  }
 
   connect() {
     console.log("Loading controller connected");
-  }
-
-  showPromptLoading() {
-    this.loadingTarget.classList.remove("d-none");
-    this.createFormShowTarget.classList.add("d-none");
   }
 
   showLoading(event) {
@@ -21,15 +19,43 @@ export default class extends Controller {
     // Prevent reloading the page
     event.preventDefault();
 
-    // Hide the default content of the #recent-cards element
-    // $('#recent-cards').hide();
-    this.recentcardsTarget.classList.add("d-none");
+    const indexFunc = (data) => {
+      // update the link to the new story
+      const link = this.linkTarget.querySelector("a");
+      link.href = `/stories/${data.storyId}`;
 
-    // Show the loading card and 2 most recently created stories
-    // $('#loading-cards').show();
-    this.loadingcardsTarget.classList.remove("d-none");
+      // Hide the loading card and show the loaded card
+      this.loadingcardsTarget.classList.add("d-none");
+      this.loadedcardsTarget.classList.remove("d-none");
+    }
 
-    // Submit the form data using AJAX
+    const showFunc = (data) => {
+      // update the link to the new story
+      const link = this.linknextchapterTarget.querySelector("a");
+      link.href = `/stories/${data.storyId}`;
+
+      // Hide the loading card and show the loaded card
+      this.loadingpromptTarget.classList.add("d-none");
+      this.loadedpromptTarget.classList.remove("d-none");
+    }
+
+    if (this.followupValue) {
+      // Hide the default content of the #recent-cards element
+      this.createFormTarget.classList.add("d-none");
+      // Show the loading card and 2 most recently created stories
+      this.loadingpromptTarget.classList.remove("d-none");
+      this.fetchStory(showFunc)
+    } else {
+      // Hide the default content of the #recent-cards element
+      this.recentcardsTarget.classList.add("d-none");
+      // Show the loading card and 2 most recently created stories
+      this.loadingcardsTarget.classList.remove("d-none");
+
+      this.fetchStory(indexFunc)
+    }
+  }
+
+  fetchStory(callback) {
     const form = document.getElementById("story-form");
     const formData = new FormData(form);
     fetch(form.action, {
@@ -39,7 +65,6 @@ export default class extends Controller {
       .then(response => response.text())
       .then(data => {
         // Perform any additional actions after the submission is complete
-
         // Check if the new story has been created every second
         let counter = 0;
         const intervalId = setInterval(() => {
@@ -49,14 +74,7 @@ export default class extends Controller {
               if (data.storyCreated || counter >= 45) {
                 clearInterval(intervalId);
                 // Perform any additional actions after the story has been created
-
-                // update the link to the new story
-                const link = this.linkTarget.querySelector("a");
-                link.href = `/stories/${data.storyId}`;
-
-                // Hide the loading card and show the loaded card
-                this.loadingcardsTarget.classList.add("d-none");
-                this.loadedcardsTarget.classList.remove("d-none");
+                callback(data);
               }
               counter++;
             });

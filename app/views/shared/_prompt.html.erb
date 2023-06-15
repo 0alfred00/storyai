@@ -1,17 +1,33 @@
 <div class="content-container contenedor">
   <div class="prompt gradient-background-prompt">
-    <div data-loading-target="loading" style="display: none">
+    <%# loading prompt %>
+    <div data-loading-target="loadingprompt" class="d-none">
       <div>
         <div id="loading">
             <div class="prompt-loading">
-              <div class="books"><p></p></div>
+              <div class="books"></div>
             </div>
           <div>
           </div>
         </div>
       </div>
     </div>
-    <div data-loading-target="createForm" style="display: block">
+    <%# loaded prompt %>
+    <div data-loading-target="loadedprompt" class="d-none">
+      <div>
+        <div id="loading">
+            <div class="prompt-loading">
+              <div class="books">
+                <div class="books-card-loaded" data-loading-target="linknextchapter"><%= link_to "Go to next chapter", root_path, class: "new-story-btn" %></div>
+              </div>
+            </div>
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# default prompt %>
+    <div data-loading-target="createForm">
       <%= form_with url: stories_path, id: 'story-form' do |form| %>
         <div class="input-filters">
           <div class="prompt-wrapper">
