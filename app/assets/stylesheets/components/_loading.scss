@@ -242,3 +242,200 @@
     opacity: 0;
   }
 }
+
+.books-card-loading {
+  width: 100%;
+  height: 57%;
+  border-radius: 30px 30px 0 0;
+  object-fit: cover;
+  font-size: 20px;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  background-color: #111;
+  background-image: linear-gradient(to top, #222 5%, #111 6%, #111 7%, transparent 7%),
+                    #{book-height(30%)},
+                    linear-gradient(to right, #222, #2e2e2e 5%, transparent 5%), // book 1
+                    #{book-grey(6%, 9%)}, // book 2
+                    #{book-grey(27%, 34%)}, // book 6
+                    #{book-grey(59%, 57%)}, // book 11
+                    #{book-height(35%)},
+                    #{book-grey(42%, 44%)}, // book 8
+                    #{book-grey(45%, 47%)}, // book 9
+                    #{book-grey(48%, 50%)}, // book 10
+                    #{book-grey(87%, 91%)}, // book 13
+                    #{book-height(37.5%)},
+                    #{book-grey(14%, 20%)}, // book 4
+                    #{book-height(40%)},
+                    #{book-grey(10%, 13%)}, // book 3
+                    #{book-color(#222, 3, 21%, 25%)}, // book 5
+                    #{book-grey(58%, 64%)}, // book 12
+                    #{book-grey(92%, 95%)}, // book 14
+                    #{book-height(48%)},
+                    #{book-color(#222, 3, 96%, 99%)}, // book 15
+                    linear-gradient(to bottom, transparent 68.5%, transparent 76%, #111 76%, #111 77.5%, transparent 77.5%, transparent 86%, #111 86%, #111 87.5%, transparent 87.5%),
+                    #{book-grey(35%, 41%)}, // book 7
+                    #{book-height(68%)},
+                    linear-gradient(to right, transparent 78%, #333 78%, #333 80%, transparent 80%, transparent 82%, #333 82%, #333 83%, transparent 83%),
+                    #{book-grey(66%, 85%)}; // box
+  background-size: 300px 150px;
+  background-position: center bottom;
+
+  // colorful books
+  &:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #111;
+    background-image: linear-gradient(to top, tan 5%, #111 6%, #111 7%, transparent 7%),
+                      #{book-height(30%)},
+                      linear-gradient(to right, rgb(226, 209, 209), darken(firebrick, 10) 5%, transparent 5%), // book 1
+                      #{book-color(rgb(245, 232, 230), 10, 6%, 9%)}, // book 2
+                      #{book-color(darkolivegreen, 10, 27%, 34%)}, // book 6
+                      #{book-color(rgb(247, 233, 231), 10, 51%, 57%)}, // book 11
+                      #{book-height(35%)},
+                      #{book-color(teal, 10, 42%, 44%)}, // book 8
+                      #{book-color(teal, 10, 45%, 47%)}, // book 9
+                      #{book-color(teal, 10, 48%, 50%)}, // book 10
+                      #{book-color(lightslategrey, 17, 87%, 91%)}, // book 13
+                      #{book-height(37.5%)},
+                      #{book-color(darkkhaki, 15, 14%, 20%)}, // book 4
+                      #{book-height(40%)},
+                      #{book-color(olive, 10, 10%, 13%)}, // book 3
+                      #{book-color(saddlebrown, 10, 21%, 25%)}, // book 5
+                      #{book-color(saddlebrown, 10, 58%, 64%)}, // book 12
+                      #{book-color(darkslategrey, 10, 92%, 95%)}, // book 14
+                      #{book-height(48%)},
+                      #{book-color(darkslategrey, 10, 96%, 99%)}, // book 15
+                      linear-gradient(to bottom, transparent 68.5%, transparent 76%, #111 76%, #111 77.5%, transparent 77.5%, transparent 86%, #111 86%, #111 87.5%, transparent 87.5%),
+                      #{book-color(rgb(105, 118, 102), 10, 35%, 41%)}, // book 7
+                      #{book-height(68%)},
+                      linear-gradient(to right, transparent 78%, rosybrown 78%, rosybrown 80%, transparent 80%, transparent 82%, rosybrown 82%, rosybrown 83%, transparent 83%),
+                      #{book-color(rgb(136, 188, 172), 10, 66%, 85%)}; // box
+    background-size: 300px 150px;
+    background-position: center bottom;
+    clip-path: circle(100px at center center);
+    animation: flashlight 5000ms infinite;
+  }
+
+  // eyes
+  &:after {
+    content: '';
+    width: 25px;
+    height: 10px;
+    position: absolute;
+    left: calc(50% + 100px);
+    bottom: 100px;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(circle, white 50%, transparent 50%),
+                      radial-gradient(circle, white 50%, transparent 50%);
+    background-size: 10px 10px;
+    background-position: left center, right center;
+    animation: eyes 5000ms infinite;
+  }
+}
+
+.books-card-loaded {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // text-align: center;
+  // line-height: 57%;
+
+  // animation: bookshelf 5000ms infinite;
+  width: 100%;
+  height: 57%;
+  border-radius: 30px 30px 0 0;
+  object-fit: cover;
+  font-size: 20px;
+  // display: inline-block;
+  margin: 0;
+  position: relative;
+  background-color: #111;
+  background-image: linear-gradient(to top, #222 5%, #111 6%, #111 7%, transparent 7%),
+                    #{book-height(30%)},
+                    linear-gradient(to right, #222, #2e2e2e 5%, transparent 5%), // book 1
+                    #{book-grey(6%, 9%)}, // book 2
+                    #{book-grey(27%, 34%)}, // book 6
+                    #{book-grey(59%, 57%)}, // book 11
+                    #{book-height(35%)},
+                    #{book-grey(42%, 44%)}, // book 8
+                    #{book-grey(45%, 47%)}, // book 9
+                    #{book-grey(48%, 50%)}, // book 10
+                    #{book-grey(87%, 91%)}, // book 13
+                    #{book-height(37.5%)},
+                    #{book-grey(14%, 20%)}, // book 4
+                    #{book-height(40%)},
+                    #{book-grey(10%, 13%)}, // book 3
+                    #{book-color(#222, 3, 21%, 25%)}, // book 5
+                    #{book-grey(58%, 64%)}, // book 12
+                    #{book-grey(92%, 95%)}, // book 14
+                    #{book-height(48%)},
+                    #{book-color(#222, 3, 96%, 99%)}, // book 15
+                    linear-gradient(to bottom, transparent 68.5%, transparent 76%, #111 76%, #111 77.5%, transparent 77.5%, transparent 86%, #111 86%, #111 87.5%, transparent 87.5%),
+                    #{book-grey(35%, 41%)}, // book 7
+                    #{book-height(68%)},
+                    linear-gradient(to right, transparent 78%, #333 78%, #333 80%, transparent 80%, transparent 82%, #333 82%, #333 83%, transparent 83%),
+                    #{book-grey(66%, 85%)}; // box
+  background-size: 300px 150px;
+  background-position: center bottom;
+
+  // colorful books
+  // &:before {
+  //   content: '';
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   background-color: #111;
+  //   background-image: linear-gradient(to top, tan 5%, #111 6%, #111 7%, transparent 7%),
+  //                     #{book-height(30%)},
+  //                     linear-gradient(to right, rgb(226, 209, 209), darken(firebrick, 10) 5%, transparent 5%), // book 1
+  //                     #{book-color(rgb(245, 232, 230), 10, 6%, 9%)}, // book 2
+  //                     #{book-color(darkolivegreen, 10, 27%, 34%)}, // book 6
+  //                     #{book-color(rgb(247, 233, 231), 10, 51%, 57%)}, // book 11
+  //                     #{book-height(35%)},
+  //                     #{book-color(teal, 10, 42%, 44%)}, // book 8
+  //                     #{book-color(teal, 10, 45%, 47%)}, // book 9
+  //                     #{book-color(teal, 10, 48%, 50%)}, // book 10
+  //                     #{book-color(lightslategrey, 17, 87%, 91%)}, // book 13
+  //                     #{book-height(37.5%)},
+  //                     #{book-color(darkkhaki, 15, 14%, 20%)}, // book 4
+  //                     #{book-height(40%)},
+  //                     #{book-color(olive, 10, 10%, 13%)}, // book 3
+  //                     #{book-color(saddlebrown, 10, 21%, 25%)}, // book 5
+  //                     #{book-color(saddlebrown, 10, 58%, 64%)}, // book 12
+  //                     #{book-color(darkslategrey, 10, 92%, 95%)}, // book 14
+  //                     #{book-height(48%)},
+  //                     #{book-color(darkslategrey, 10, 96%, 99%)}, // book 15
+  //                     linear-gradient(to bottom, transparent 68.5%, transparent 76%, #111 76%, #111 77.5%, transparent 77.5%, transparent 86%, #111 86%, #111 87.5%, transparent 87.5%),
+  //                     #{book-color(rgb(105, 118, 102), 10, 35%, 41%)}, // book 7
+  //                     #{book-height(68%)},
+  //                     linear-gradient(to right, transparent 78%, rosybrown 78%, rosybrown 80%, transparent 80%, transparent 82%, rosybrown 82%, rosybrown 83%, transparent 83%),
+  //                     #{book-color(rgb(136, 188, 172), 10, 66%, 85%)}; // box
+  //   background-size: 300px 150px;
+  //   background-position: center bottom;
+  //   clip-path: circle(100px at center center);
+  //   animation: flashlight 5000ms infinite;
+  // }
+
+  // eyes
+  // &:after {
+  //   content: '';
+  //   width: 25px;
+  //   height: 10px;
+  //   position: absolute;
+  //   left: calc(50% + 100px);
+  //   bottom: 100px;
+  //   background-repeat: no-repeat;
+  //   background-image: radial-gradient(circle, white 50%, transparent 50%),
+  //                     radial-gradient(circle, white 50%, transparent 50%);
+  //   background-size: 10px 10px;
+  //   background-position: left center, right center;
+  //   animation: eyes 5000ms infinite;
+  // }
+}

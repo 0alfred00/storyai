@@ -4,5 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link popper.js
 //= link bootstrap.min.js
-//= link rails-ujs.js
-//= link jquery.js
+
