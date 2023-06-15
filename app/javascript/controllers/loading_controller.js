@@ -23,6 +23,7 @@ export default class extends Controller {
       // update the link to the new story
       const link = this.linkTarget.querySelector("a");
       link.href = `/stories/${data.storyId}`;
+      // link.style.textDecoration = "none";
 
       // Hide the loading card and show the loaded card
       this.loadingcardsTarget.classList.add("d-none");
@@ -33,6 +34,7 @@ export default class extends Controller {
       // update the link to the new story
       const link = this.linknextchapterTarget.querySelector("a");
       link.href = `/stories/${data.storyId}`;
+      // link.style.textDecoration = "none";
 
       // Hide the loading card and show the loaded card
       this.loadingpromptTarget.classList.add("d-none");
