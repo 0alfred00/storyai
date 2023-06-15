@@ -73,7 +73,7 @@ export default class extends Controller {
           fetch("/stories/check_story")
             .then(response => response.json())
             .then(data => {
-              if (data.storyCreated || counter >= 45) {
+              if (data.storyCreated || counter >= 25) {
                 clearInterval(intervalId);
                 // Perform any additional actions after the story has been created
                 callback(data);
