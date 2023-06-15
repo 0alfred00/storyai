@@ -3,10 +3,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="loading"
 export default class extends Controller {
-  static targets = ["loading","createForm","recentcards","loadingcards","loadedcards","link"]
+  static targets = ["loading","createForm", "createFormShow","recentcards","loadingcards","loadedcards","link"]
 
   connect() {
     console.log("Loading controller connected");
+  }
+
+  showPromptLoading() {
+    this.loadingTarget.classList.remove("d-none");
+    this.createFormShowTarget.classList.add("d-none");
   }
 
   showLoading(event) {

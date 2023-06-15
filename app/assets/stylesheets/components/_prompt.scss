@@ -10,32 +10,42 @@
   margin: 5px 0 30px 0;
  }
 
+ .prompt-loading{
+  // background-color:$sign-up;
+  height: 250px;
+  width: 100%;
+  border-radius: 15px;
+  font-size: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: inline-block;
+  padding: 0;
+  margin: 0 0 30px 0;
+ }
+
 .contenedor{
   padding: 0;
+}
+
+.prompt-wrapper {
+  width: 75%;
 
 }
-.enter-create{
+.input-filters{
   display: flex;
   justify-content: center;
-  color: $card-description;
-  border-radius: 15px;
-  padding: 24px;
-  font-weight: 500;
-  position: relative;
-  text-align: left;
-  font-size: 20px;
-  align-items: center;
   gap: 50px;
+  padding-top: 45px;
 }
 .text-container{
   height: 130px;
-  width: 75%;
+  width: 100%;
   padding: 25px;
   background-color:white;
   border-radius: 15px;
   border:none;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   font-family: $body-font;
+
 }
 
 .text-container p {

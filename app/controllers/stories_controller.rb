@@ -49,10 +49,10 @@ class StoriesController < ApplicationController
     StoriesWorker.perform_async(new_prompt.id)
 
     # redirect to a page that informs the user that their story is being generated
-    respond_to do |format|
-      format.html { redirect_to stories_path }
-      format.js
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to stories_path }
+    #   format.js
+    # end
   end
 
 
