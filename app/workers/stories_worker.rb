@@ -19,7 +19,7 @@ class StoriesWorker
       new_story.save
 
       # broadcast to ActionCable
-      ActionCable.server.broadcast("story", { story_id: new_story.id })
+      # ActionCable.server.broadcast("story", { story_id: new_story.id })
 
       # create and save picture
       # create_and_save_picture(new_story)
