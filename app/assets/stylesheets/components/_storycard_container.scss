@@ -1,19 +1,19 @@
 .storycard-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
-  justify-items: center;
-  margin: 15px 0 15px 0;
+  gap: 25px;
+  justify-content: space-evenly;
+  margin: 25px 0 15px 0;
 }
 
-// @media(max-width: 992px) {
-//   .storycard-container {
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
+@media(max-width: 992px) {
+  .storycard-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
-// @media(max-width: 768px) {
-//   .storycard-container {
-//     grid-template-columns: 1fr;
-//   }
-// }
+@media(max-width: 768px) {
+  .storycard-container {
+    grid-template-columns: 1fr;
+  }
+}

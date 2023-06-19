@@ -1,15 +1,24 @@
 .logos{
   text-decoration: none;
-  color: #F8FBFC;
+  color: $icons;
   align-items: center;
+  padding: 0 0 0 15px;
+}
+
+.logo-soozie{
+  text-decoration: none;
+  color: $icons;
+  align-items: center;
+  padding: 0;
+  display: inline;
 }
 .bg-color{
-  background-color: #81B4BA;
-  height: 4rem;
+  background-color: $navbar-bg;
+  //height: 35px;
 }
 .footer-pos{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5rem 0 5rem;
+  padding: 16px 55px 16px 55px;
 }

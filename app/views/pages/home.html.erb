@@ -1,2 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="gradient-background">
+  <div class="content-container gradient-background">
+    <h1 class="headline">Create bespoke bedtime stories.</h1>
+    <p class="subhead">Soozie helps busy parents create personalized bedtime stories <br>for their children in seconds.</p>
+    <% if user_signed_in? %>
+      <div class="cta-container">
+        <%= link_to "Create your story", stories_path, class: "signup-btn" %>
+      </div>
+    <% else %>
+      <div class="cta-container">
+        <%= link_to "Sign Up Now", new_user_registration_path, class: "signup-btn" %>
+      </div>
+    <% end %>
+    <div class="storycard-container">
+      <% Story.joins(:favorites).where(public: true).group(:id).order("COUNT(favorites.id) DESC").first(3).each do |story| %>
+        <%= render "shared/story_card", story: story %>
+      <% end %>
+    </div>
+    <h2 class="section-title">Trusted by parents everywhere</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p class="testimonial-text">"Soozie has been a lifesaver for me. As a busy working mom, I don't always have time to come up with new bedtime stories for my kids. Soozie makes it easy to create personalized stories that my kids love."</p>
+        <p class="testimonial-author">- Jane, mother of two</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"I love using Soozie to create bedtime stories for my son. The stories are always unique and engaging, and it's so easy to use. I highly recommend it to any parent!"</p>
+        <p class="testimonial-author">- John, father of one</p>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <div class="cta-container">
+        <%= link_to "Create your story", stories_path, class: "signup-btn" %>
+      </div>
+    <% else %>
+      <div class="cta-container">
+        <%= link_to "Sign Up Now", new_user_registration_path, class: "signup-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

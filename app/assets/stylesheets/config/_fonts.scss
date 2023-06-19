@@ -1,9 +1,14 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500&family=Quicksand:wght@300;400;500;600&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+// $body-font: "Work Sans", "Helvetica", "sans-serif";
+// $headers-font: "Nunito", "Helvetica", "sans-serif";
+$headers-font: 'Fredoka', sans-serif;
+$body-font: 'Quicksand', sans-serif;
+$story-font: "Times New Roman", "Times", "serif";
+$story-first-letter-font: "Dancing Script", "cursive";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

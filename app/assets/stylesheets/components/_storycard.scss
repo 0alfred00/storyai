@@ -1,43 +1,51 @@
 .storycard {
-  background-color: $card;
-  width: 270px;
-  height: 285px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: $card-bg;
+  width: 100%;
+  height: 390px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
-  margin: 5px;
+  border-radius: 30px; /* 5px rounded corners */
+  margin: 5px 0 5px 0;
+  justify-self: center;
 }
 
 /* Add rounded corners to the top left and the top right corner of the image */
 .storycard > img {
-  border-radius: 5px 5px 0 0;
+  border-radius: 30px 30px 0 0;
   object-fit: cover;
   width: 100%;
-  height: 44%;
+  height: 57%;
 
 }
 
 .card-container {
   padding: 20px;
   display: flex;
-  height: 56%;
+  height: 43%;
   flex-direction: column;
   justify-content: space-between;
+
+}
+
+.card-container a {
+  text-decoration: none;
 }
 
 .card-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: $icons;
-  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: $prompt-text;
+  text-align: left;
   text-decoration: none;
+  font-family: $headers-font;
 }
 
 .card-description {
   font-size: 14px;
-  color: $card-description;
-  text-align: center;
+  color: $prompt-text;
+  text-align: left;
   overflow: hidden;
+  font-family: $body-font;
 }
 
 .heart-container{
@@ -49,6 +57,7 @@
   color: $card-details;
   text-align: right;
   font-weight: 400;
+  font-family: $body-font;
 }
 
 .card-heart-unliked {
@@ -71,11 +80,13 @@
   color: $card-details;
   text-align: left;
   font-weight: 400;
+  font-family: $body-font;
 }
 
 .details-container {
   display: flex;
   justify-content: space-between;
+  font-family: $body-font;
 }
 
 .card-public {

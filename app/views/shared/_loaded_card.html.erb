@@ -1,0 +1,16 @@
+<div class="storycard" id="loaded-card">
+  <div class="books-card-loaded" data-loading-target="link"><%= link_to "Go to story", story_path(@last_story), class: "new-story-btn" %></div>
+  <div class="card-container">
+    <div class="main-container">
+      <div class="card-title">New story is ready</div>
+      <div class="card-description">
+        <p><span data-controller="typed"
+        data-typed-sentences-value="<%= ['Start reading now...', 'Time to dive in...', "Go go go...", 'Click the button already...', 'Lights out...'].to_json %>"
+        data-typed-type-speed-value="20"
+        data-typed-back-speed-value="0"
+        data-typed-shuffle-value="true"
+        data-typed-loop-value="true"></span></p>
+      </div>
+    </div>
+  </div>
+</div>

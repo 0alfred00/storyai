@@ -324,7 +324,6 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { class: 'form-text' }
   end
 
-
   # Floating Labels form
   #
   # floating labels default_wrapper

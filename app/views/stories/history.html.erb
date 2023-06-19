@@ -1,10 +1,12 @@
-<div class="container p-0">
-  <div class="category-card">
-    <div class="category-title">History</div>
-  </div>
-  <div class="storycard-container">
-    <% @stories.each do |story| %>
-      <%= render "shared/story_card", story: story %>
-    <% end %>
+<div class="content-container">
+  <div class="container">
+    <div class="category-card">
+      <div class="title-sub">History</div>
+    </div>
+    <div class="storycard-container">
+      <% @stories.order(created_at: :desc).each do |story| %>
+        <%= render "shared/story_card", story: story %>
+      <% end %>
+    </div>
   </div>
 </div>

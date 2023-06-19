@@ -1,38 +1,71 @@
 .prompt{
-  background-color:$sign-up;
+  // background-color:$sign-up;
   height: 250px;
   width: 100%;
-  border-radius: 30px;
+  border-radius: 15px;
   font-size: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   display: inline-block;
+  padding: 0;
+  margin: 5px 0 30px 0;
  }
 
-.enter-create{
+ .prompt-loading{
+  // background-color:$sign-up;
+  height: 250px;
+  width: 100%;
+  border-radius: 15px;
+  font-size: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: inline-block;
+  padding: 0;
+  margin: 0 0 30px 0;
+ }
+
+.contenedor{
+  padding: 0;
+}
+
+.prompt-wrapper {
+  width: 75%;
+
+}
+.input-filters{
   display: flex;
   justify-content: center;
-  color: $card-description;
-  border-radius: 30px;
-  padding: 24px;
-  font-weight: 500;
-  position: relative;
-  font-family: serif;
-  text-align: left;
-  font-size: 20px;
-  align-items: center;
-  gap: 55px;
+  gap: 50px;
+  padding-top: 45px;
 }
 .text-container{
   height: 130px;
-  width: 75%;
+  width: 100%;
+  padding: 25px;
   background-color:white;
-  border-radius: 30px;
+  border-radius: 15px;
   border:none;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  font-family: $body-font;
+
 }
 
 .text-container p {
   margin: 20px 0 0 20px
+}
+
+.text-container::placeholder {
+  font-family: $body-font;
+  color: $prompt-text;
+  opacity: 60%;
+}
+.no-outline {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.custom-font {
+  font-family: $body-font;
+  color:$prompt-text;
+  text-decoration: none;
+  /* Additional styles can be added */
 }
 
 .navbar-lewagon .navbar-brand p {
@@ -40,5 +73,5 @@
   border-radius: 30%;
 }
 .story-font{
-  font-family:'Times New Roman', Times, serif;
+  font-family:$story-font;
 }

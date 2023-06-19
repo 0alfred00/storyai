@@ -27,6 +27,8 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem "pg_search"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -85,3 +87,5 @@ gem "cloudinary"
 gem "ruby-openai"
 gem "json"
 gem 'jquery-rails'
+gem 'sidekiq', '~> 6.0'
+gem 'redis'

@@ -3,21 +3,39 @@
   margin-bottom: 40px;
   padding: 20px;
   border: 1px solid lightgrey;
-  border-radius: 30px;
+  border-radius: 15px;
+  background-color: white;
 
-  .story-title {
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
+  .story-first-letter {
+    font-size: 56px;
+    text-align: left;
+    font-family: $story-first-letter-font;
   }
 
   .story-content {
     font-size: 18px;
     line-height: 1.5;
+    font-family: $story-font;
+    padding-top: 40px;
 
     p {
       margin-bottom: 10px;
     }
+  }
+
+  .story-content p::first-letter {
+    font-size: 60px;
+    font-family:$story-first-letter-font;
+    // font-weight: bold;
+    // float: left;
+    line-height: 0;
+  }
+
+  .story-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    font-family: $headers-font;
+    margin-bottom: 20px;
   }
 }

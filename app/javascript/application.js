@@ -3,4 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-//= require jquery
+
+// Console logging for testing
+// console.log("application.js loaded")

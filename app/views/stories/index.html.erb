@@ -1,16 +1,49 @@
-<div class="teaser">Welcome to Soozie!</div>
-<div class="teaser-description">
-  Create bespoke bedtime stories to read to your children.
-  <br>Simply enter a prompt to create a story.
-  </div>
-  <%= render "shared/prompt" %>
-  <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
-    <div class="container p-0">
-      <%= render "shared/category_card", genre: genre %>
-      <div class="storycard-container">
-        <% Story.joins(:prompt, :favorites).where(prompts: {genre: genre}).group(:id).order("COUNT(favorites.id) DESC").first(3).each do |story| %>
+<div class="content-container" data-controller="loading">
+  <% if @search %>
+    <h2 class="section-title">Search results</h2>
+    <div class="storycard-container">
+      <% @stories.order(created_at: :desc).each do |story| %>
+        <%= render "shared/story_card", story: story %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="container">
+      <%= render "shared/prompt" %>
+      <div class="category-card">
+        <div class="category-title">Recently created</div>
+      </div>
+      <%# recent cards %>
+      <div class="storycard-container" data-loading-target="recentcards">
+        <% @stories.order(created_at: :desc).first(3).each do |story| %>
           <%= render "shared/story_card", story: story %>
         <% end %>
-        </div>
       </div>
+      <%# loading cards %>
+      <div class="storycard-container d-none" data-loading-target="loadingcards">
+        <%= render "shared/loading_card" %>
+        <% @stories.order(created_at: :desc).first(2).each do |story| %>
+          <%= render "shared/story_card", story: story %>
+        <% end %>
+      </div>
+      <%# loaded cards %>
+      <div class="storycard-container d-none" data-loading-target="loadedcards">
+        <%= render "shared/loaded_card" %>
+        <% @stories.order(created_at: :desc).first(2).each do |story| %>
+          <%= render "shared/story_card", story: story %>
+        <% end %>
+      </div>
+      <h2 class="section-title">Browse community stories</h2>
+      </div>
+      <% %w(Educational Adventurous Mystery Fairytale).each do |genre| %>
+        <div class="container">
+          <%= render "shared/category_card", genre: genre %>
+          <div class="storycard-container">
+            <% Story.joins(:prompt, :favorites).where(prompts: {genre: genre}).group(:id).order("COUNT(favorites.id) DESC").first(3).each do |story| %>
+              <%= render "shared/story_card", story: story %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
+</div>

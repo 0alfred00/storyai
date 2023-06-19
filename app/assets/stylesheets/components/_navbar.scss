@@ -4,26 +4,23 @@
   z-index: 1000;
 }
 
-
 .navbar-lewagon {
   justify-content: space-between;
-  background-color:#81B4BA;
-  padding-right:25px;
+  background-color: $navbar-bg;
+  padding: 9px 55px 9px 55px;
   width: 100%;
   // transition: background-color 0.5s;
 }
-// .navbar-lewagon:hover {
-//   background-color:#d9d0d8;
-//   animation-duration: 0.55s;
-// }
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 50px;
-  margin-left: 25px;
   border-radius: 50%;
+  width: 45px;
+  height: 45px;
 }
 
 .search-bar{
@@ -31,15 +28,43 @@
   background-color: #ffffff;
   text-align: center;
   border-radius: 12px;
-  width: 200px;
-  height: 30px;
+  height: 50px;
   box-sizing: border-box;
   box-shadow:  0 1px 5px 0;
   cursor: pointer;
 }
+
+.navbar-center {
+  position: fixed;
+  left: 37.96%;
+
+}
 .search-button{
+  background-color: white;
+  box-shadow: none;
+  margin-top: 1px;
+}
+
+.input-field {
   border: none;
-  background-color: transparent;
+  padding: 6px 12px 10px 12px;
+}
+
+.input-group-append {
+  background-color: white;
+  border-radius: 30px;
+
+}
+
+.search-input {
+  border-radius: 30px;
+  height: 30px;
+  width: 30vw;
+}
+
+.magnifying {
+  color: $card-description;
+  background-color: white;
 }
 
 .nav-link{
@@ -49,10 +74,24 @@
   text-align: center;
   padding-top: 3px;
   width: 100px;
-  height: 30px;
+  height: 50px;
 }
 
 .navbar-icon {
   color:$icons;
   text-decoration: none;
+  height: 50px;
+}
+
+
+@media(max-width: 992px) {
+  .navbar-center {
+    width: 45vw;
+  }
+}
+
+@media(max-width: 768px) {
+  .navbar-center {
+    width: 45vw;
+  }
 }
