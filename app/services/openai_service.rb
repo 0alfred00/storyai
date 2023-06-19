@@ -10,14 +10,15 @@ class OpenaiService
     @prompt = prompt
   end
 
+  # Call API for chat to create a new story
   def call
     response = client.chat(
       parameters: {
-        model: "gpt-3.5-turbo", # Required.
-        messages: [{ role: "user", content: prompt }], # Required.
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: prompt }],
         temperature: 0.7,
         stream: false,
-        max_tokens: 3200 # keep buffer for prompt tokens
+        max_tokens: 3200 # Keep buffer for prompt tokens
       })
 
     if response["error"]
@@ -28,13 +29,13 @@ class OpenaiService
     end
   end
 
+  # Call API for a title picture for the new story
   def create_picture
     response = client.images.generate(
       parameters: {
         prompt: prompt,
         size: "512x512"
         })
-    # return response.dig("data", 0, "url")
     return response["data"][0]["url"]
   end
 end

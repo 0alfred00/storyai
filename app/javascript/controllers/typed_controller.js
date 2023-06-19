@@ -13,9 +13,8 @@ export default class extends Controller {
   }
 
   connect() {
-
     // Console logging for testing
-    console.log("Typed controller connected");
+    // console.log("Typed controller connected");
 
     // Set the default values for the Typed.js options
     const options = {

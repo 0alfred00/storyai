@@ -1,43 +1,43 @@
-  <div class="storycard">
-    <% if story.photo.key.nil? %>
-      <img src="https://images.unsplash.com/photo-1536323760109-ca8c07450053" alt="Storypic" style="width:100%">
-    <% else %>
-      <%= cl_image_tag story.photo.key, alt: "Story picture", crop: :fill %>
+<div class="storycard">
+  <% if story.photo.key.nil? %>
+    <img src="https://images.unsplash.com/photo-1536323760109-ca8c07450053" alt="Storypic" style="width:100%">
+  <% else %>
+    <%= cl_image_tag story.photo.key, alt: "Story picture", crop: :fill %>
+  <% end %>
+  <div class="card-container">
+    <%= link_to story_path(story) do %>
+      <div class="main-container">
+        <div class="card-title"><%= story.title %></div>
+        <div class="card-description"><%= story.summary %></div>
+      </div>
     <% end %>
-    <div class="card-container">
-      <%= link_to story_path(story) do %>
-        <div class="main-container">
-          <div class="card-title"> <%= story.title %></div>
-          <div class="card-description"><%= story.summary %></div>
-        </div>
-      <% end %>
-      <div class="details-container">
-      <div class="words-count"><%= story.prompt.length.to_i / 130 %> mins</div>
+    <div class="details-container">
+      <div class="words-count"><%= story.prompt.length.to_i / 130 %> min</div>
       <div class="heart-container">
         <div class="hearts-count"><%= story.favorites.count %>&ensp;</div>
       <div>
       <% if current_user %>
         <% favorite = current_user.favorites.find_by(story: story) %>
-        <% end %>
-        <div data-controller="favorite">
-          <%= render "shared/favorite_icon", favorite: favorite, story: story %>
-        </div>
-        </div>
-      <% if current_user %>
-        <% if story.prompt.user_id == current_user.id %>
-          <%= form_for story, remote: true, html: { id: "story-#{story.id}" } do |f| %>
-            <%= f.hidden_field :public %>
-            <% if story.public %>
-              <%= button_tag(type: 'submit', class: "card-public fa-solid fa-lock-open") do %>
-              <% end %>
-            <% else %>
-              <%= button_tag(type: 'submit', class: "card-public fa-solid fa-lock") do %>
-              <% end %>
+      <% end %>
+      <div data-controller="favorite">
+        <%= render "shared/favorite_icon", favorite: favorite, story: story %>
+      </div>
+    </div>
+    <% if current_user %>
+      <% if story.prompt.user_id == current_user.id %>
+        <%= form_for story, remote: true, html: { id: "story-#{story.id}" } do |f| %>
+          <%= f.hidden_field :public %>
+          <% if story.public %>
+            <%= button_tag(type: 'submit', class: "card-public fa-solid fa-lock-open") do %>
+            <% end %>
+          <% else %>
+            <%= button_tag(type: 'submit', class: "card-public fa-solid fa-lock") do %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
+</div>
+</div>
 </div>

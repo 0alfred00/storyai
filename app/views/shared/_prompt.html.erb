@@ -2,27 +2,15 @@
   <div class="prompt gradient-background-prompt">
     <%# loading prompt %>
     <div data-loading-target="loadingprompt" class="d-none">
-      <div>
-        <div id="loading">
-            <div class="prompt-loading">
-              <div class="books"></div>
-            </div>
-          <div>
-          </div>
-        </div>
+      <div class="prompt-loading">
+        <div class="books"></div>
       </div>
     </div>
     <%# loaded prompt %>
     <div data-loading-target="loadedprompt" class="d-none">
-      <div>
-        <div id="loading">
-            <div class="prompt-loading">
-              <div class="books">
-                <div class="books-card-loaded" data-loading-target="linknextchapter"><%= link_to "Go to next chapter", root_path, class: "new-story-btn" %></div>
-              </div>
-            </div>
-          <div>
-          </div>
+      <div class="prompt-loading">
+        <div class="books">
+          <div class="books-card-loaded" data-loading-target="linknextchapter"><%= link_to "Go to next chapter", root_path, class: "new-story-btn" %></div>
         </div>
       </div>
     </div>
@@ -49,6 +37,7 @@
               </div>
             </div>
           </div>
+        </div>
       <% end %>
     </div>
   </div>
