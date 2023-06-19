@@ -4,6 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   fire() {
-    console.log("favorites controller loaded")
+    // Console logging for testing
+    // console.log("favorites controller loaded")
   }
 }

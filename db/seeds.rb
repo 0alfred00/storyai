@@ -1,5 +1,5 @@
-# /db/seeds.rb
-# seed data for development and testing
+# Seed data for development and testing
+# Comment and uncomment to seed specific data
 
 # require "faker"
 
@@ -13,7 +13,7 @@
 #   )
 # end
 
-# # # Seed Stories
+# # Seed Stories
 
 # users = User.all
 # age_groups = ["Babies", "Toddler", "Ages 5-8", "Ages 9-12"]
@@ -118,9 +118,9 @@
 # heroku seed please do not run the code below it costs 5€ on openai API each time
 
 # Replace with your own Cloudinary credentials
-CLOUDINARY_CLOUD_NAME = 'dwszg7wzr'
-CLOUDINARY_API_KEY = '364941357431972'
-CLOUDINARY_API_SECRET = 'ZzgPSnVgq8m2ByBW10s5cB3MRYA'
+CLOUDINARY_CLOUD_NAME = ''
+CLOUDINARY_API_KEY = ''
+CLOUDINARY_API_SECRET = ''
 
 require 'cloudinary'
 require 'openai'

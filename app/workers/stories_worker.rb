@@ -2,40 +2,44 @@ class StoriesWorker
   include Sidekiq::Worker
 
   def perform(prompt_id)
-    # find the prompt by id
+    # Find the prompt by id and build final api_prompt
     prompt = Prompt.find(prompt_id)
-    api_prompt = build_api_prompt(prompt["user_input"], prompt["length"], prompt["language"], prompt["genre"], prompt["reference_story_id"], prompt["age_group"])
+    api_prompt = build_api_prompt(
+      prompt["user_input"],
+      prompt["length"],
+      prompt["language"],
+      prompt["genre"],
+      prompt["reference_story_id"],
+      prompt["age_group"]
+    )
 
-    # send prompt to api and receive response
+    # Send prompt to api and receive response
     response_string = OpenaiService.new(api_prompt).call
     if response_string["error"]
       flash[:alert] = "Sorry, we couldn't generate a story with the parameters you provided. Please try again."
       redirect_to root_path
     else
+      # Save story to database
       response = JSON.parse(response_string)
-
-      # create and save story
-      new_story = Story.create(title: response["title"], body: response["body"], summary: response["summary"], follow_up_summary: response["follow_up_summary"], public: true, prompt_id: prompt.id)
+      new_story = Story.create(
+        title: response["title"],
+        body: response["body"],
+        summary: response["summary"],
+        follow_up_summary: response["follow_up_summary"],
+        public: true,
+        prompt_id: prompt.id
+      )
       new_story.save
 
-      # broadcast to ActionCable
-      # ActionCable.server.broadcast("story", { story_id: new_story.id })
-
-      # create and save picture
-      # create_and_save_picture(new_story)
+      # Create picture
       create_and_save_picture(prompt)
-
-      # redirect to story show page
-      # redirect_to story_path(new_story)
-      # generate a URL for the new story
-      # story_url = Rails.application.routes.url_helpers.story_url(new_story, host: 'localhost:3000')
     end
   end
 
   private
 
-    # this is the prompt with interpolated variables
-  # it either runs the initial prompt or the follow up prompt based on whether there is a reference story
+  # This is the prompt with interpolated variables
+  # It either runs the initial prompt or the follow up prompt based on whether there is a reference story
   def build_api_prompt(user_input, length, language, genre, reference_story_id, age_group)
     if reference_story_id
       follow_up_summary = Story.find(reference_story_id).follow_up_summary
@@ -92,13 +96,6 @@ class StoriesWorker
     end
   end
 
-  # def create_and_save_picture(story)
-  #   prompt_picture = build_api_prompt_picture(story.follow_up_summary)
-  #   picture_url = OpenaiService.new(prompt_picture).create_picture
-  #   story.photo.attach(io: URI.open(picture_url), filename: 'story_picture.png', content_type: 'image/png')
-  #   story.save
-  # end
-
   def create_and_save_picture(prompt)
     prompt_picture = build_api_prompt_picture(prompt.user_input)
     picture_url = OpenaiService.new(prompt_picture).create_picture
@@ -107,7 +104,7 @@ class StoriesWorker
   end
 
   def build_api_prompt_picture(prompt)
-    default = "Create a cover photo for a children's bedtime story. The style should be fantasy and based on the following summary: "
+    default = "Create a cover photo for a children's bedtime story. The style should be fantasy, colorful and based on the following summary: "
     default + prompt
   end
 end

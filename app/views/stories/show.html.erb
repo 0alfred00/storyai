@@ -2,21 +2,19 @@
   <h1 class="headline"><%= @story.title %></h1>
   <div class="story-container">
     <% if @story.prompt.reference_story %>
-      <div class="story-content"><p>
-        <%= @reference_story.body %>
-        </p></div>
-        <div class="story-content"><p>
-        <span data-controller="typed"
+      <div class="story-content">
+        <p><%= @reference_story.body %></p>
+      </div>
+      <div class="story-content">
+        <p><span data-controller="typed"
           data-typed-sentences-value="<%= [@story.body].to_json %>">
-        </span>
-        </p>
+        </span></p>
       </div>
     <% else %>
-      <div class="story-content"><p>
-          <span data-controller="typed"
-                data-typed-sentences-value="<%= [@story.body].to_json %>">
-          </span>
-        </p>
+      <div class="story-content">
+        <p><span data-controller="typed"
+          data-typed-sentences-value="<%= [@story.body].to_json %>">
+        </span></p>
       </div>
     <% end %>
   </div>

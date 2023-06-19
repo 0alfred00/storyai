@@ -9,6 +9,7 @@ class Story < ApplicationRecord
   pg_search_scope :search_by_title_and_summary,
     against: [ :title, :summary ],
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      # So that `superman batm` will return something
+      tsearch: { prefix: true }
     }
 end
