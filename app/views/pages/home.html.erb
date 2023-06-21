@@ -11,7 +11,7 @@
         <%= link_to "Sign Up Now", new_user_registration_path, class: "signup-btn" %>
       </div>
     <% end %>
-    <div class="storycard-container">
+    <div class="storycard-container" data-controller="toggle" data-toggle-current-user-id-value="<%= current_user.id %>">
       <% Story.joins(:favorites).where(public: true).group(:id).order("COUNT(favorites.id) DESC").first(3).each do |story| %>
         <%= render "shared/story_card", story: story %>
       <% end %>

@@ -1,7 +1,7 @@
-<div class="content-container" data-controller="loading">
+<div class="content-container" data-controller="loading toggle" data-toggle-current-user-id-value="<%= current_user.id %>">
   <% if @search %>
     <h2 class="section-title">Search results</h2>
-    <div class="storycard-container">
+    <div class="storycard-container" data-controller="toggle">
       <% @stories.order(created_at: :desc).each do |story| %>
         <%= render "shared/story_card", story: story %>
       <% end %>
