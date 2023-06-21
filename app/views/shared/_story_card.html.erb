@@ -19,9 +19,9 @@
       <% if current_user %>
         <% favorite = current_user.favorites.find_by(story: story) %>
         <% if favorite.nil? %>
-          <%= link_to '<i class="card-heart-unliked fa-solid fa-heart"></i>'.html_safe, story_favorites_path(story), data: {turbo_method: :post, remote: true, type: :script, toggle_target: "heartIcon", action: "click->toggle#toggleFavorite"} %>
+          <%= link_to '<i class="card-heart-unliked fa-solid fa-heart"></i>'.html_safe, story_favorites_path(story), data: {turbo_method: :post, remote: true, type: :script, toggle_target: "heartIcon", action: "click->toggle#toggleFavorite", story_id: story.id} %>
         <% else %>
-          <%= link_to '<i class="card-heart-liked fa-solid fa-heart"></i>'.html_safe, favorite_path(favorite), data: {turbo_method: :delete, toggle_target: "heartIcon", action: "click->toggle#toggleFavorite"}  %>
+          <%= link_to '<i class="card-heart-liked fa-solid fa-heart"></i>'.html_safe, favorite_path(favorite), data: {turbo_method: :delete, toggle_target: "heartIcon", action: "click->toggle#toggleFavorite", story_id: story.id}  %>
         <% end %>
       <% end %>
     </div>

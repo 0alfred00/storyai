@@ -5,12 +5,12 @@ export default class extends Controller {
 
   connect() {
     // Console logging for testing
-    console.log("Toggle controller connected");
+    // console.log("Toggle controller connected");
   }
 
   async togglePublic(event) {
     // Console logging for testing
-    console.log("togglePublic function executed");
+    // console.log("togglePublic function executed");
 
     // Get the story ID from the data attribute
     const storyId = event.target.getAttribute('data-story-id');
@@ -35,14 +35,17 @@ export default class extends Controller {
 
   async toggleFavorite(event) {
     // Console logging for testing
-    console.log("toggleFavorite function executed");
+    // console.log("toggleFavorite function executed");
 
     // Get the story ID and current user ID from the data attributes
     const storyId = event.target.getAttribute('data-story-id');
     const currentUserId = this.data.get('currentUserId');
 
     // Determine whether to create or delete a favorite
-    const method = this.heartIconTarget.classList.contains('card-heart-liked') ? 'DELETE' : 'POST';
+    const storyCard = event.target.closest('.storycard');
+    const heartIcon = storyCard.querySelector('i.fa-heart');
+    const favoriteCountTarget = storyCard.querySelector('.hearts-count');
+    const method = heartIcon.classList.contains('card-heart-liked') ? 'DELETE' : 'POST';
     const url = method === 'POST' ? `/stories/${storyId}/favorites` : `/favorites/${storyId}`;
 
     // Make an HTTP request to create/delete a favorite
@@ -57,8 +60,9 @@ export default class extends Controller {
       })
     });
     // Update the UI accordingly
-    this.heartIconTarget.classList.toggle('card-heart-liked');
-    const favoriteCount = parseInt(this.favoriteCountTarget.textContent);
-    this.favoriteCountTarget.textContent = method === 'POST' ? favoriteCount + 1 : favoriteCount - 1;
+    heartIcon.classList.toggle('card-heart-liked');
+    heartIcon.classList.toggle('card-heart-unliked');
+    const favoriteCount = parseInt(favoriteCountTarget.textContent);
+    favoriteCountTarget.innerHTML = method === 'POST' ? `${favoriteCount + 1}&ensp;` : `${favoriteCount - 1}&ensp;`;
   }
 }
