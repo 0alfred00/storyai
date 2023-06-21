@@ -3,7 +3,7 @@
     <div class="category-card">
       <div class="title-sub">History</div>
     </div>
-    <div class="storycard-container" data-controller="toggle">
+    <div class="storycard-container" data-controller="toggle" data-toggle-current-user-id-value="<%= current_user.id %>">
       <% @stories.order(created_at: :desc).each do |story| %>
         <%= render "shared/story_card", story: story %>
       <% end %>

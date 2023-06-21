@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["publicToggle", "favoriteToggle", "favoriteCount"]
+  static targets = ["publicToggle", "heartIcon", "favoriteCount"]
 
   connect() {
     // Console logging for testing
@@ -9,6 +9,9 @@ export default class extends Controller {
   }
 
   async togglePublic(event) {
+    // Console logging for testing
+    console.log("togglePublic function executed");
+
     // Get the story ID from the data attribute
     const storyId = event.target.getAttribute('data-story-id');
 
@@ -25,22 +28,21 @@ export default class extends Controller {
         }
       })
     });
-
-    // Check if the operation was successful
-    if (response.ok) {
-      // Update the UI accordingly
-      event.target.classList.toggle('fa-lock-open');
-    } else {
-      // Handle any errors
-    }
+    // Update the UI accordingly
+    event.target.classList.toggle('fa-lock-open');
+    event.target.classList.toggle('fa-lock');
   }
 
   async toggleFavorite(event) {
-    // Get the story ID from the data attribute
+    // Console logging for testing
+    console.log("toggleFavorite function executed");
+
+    // Get the story ID and current user ID from the data attributes
     const storyId = event.target.getAttribute('data-story-id');
+    const currentUserId = this.data.get('currentUserId');
 
     // Determine whether to create or delete a favorite
-    const method = event.target.classList.contains('card-heart-liked') ? 'DELETE' : 'POST';
+    const method = this.heartIconTarget.classList.contains('card-heart-liked') ? 'DELETE' : 'POST';
     const url = method === 'POST' ? `/stories/${storyId}/favorites` : `/favorites/${storyId}`;
 
     // Make an HTTP request to create/delete a favorite
@@ -51,18 +53,12 @@ export default class extends Controller {
         'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
       },
       body: JSON.stringify({
-        user_id: current_user.id
+        user_id: currentUserId
       })
     });
-
-    // Check if the operation was successful
-    if (response.ok) {
-      // Update the UI accordingly
-      event.target.classList.toggle('card-heart-liked');
-      const favoriteCount = parseInt(this.favoriteCountTarget.textContent);
-      this.favoriteCountTarget.textContent = method === 'POST' ? favoriteCount + 1 : favoriteCount - 1;
-    } else {
-      // Handle any errors
-    }
+    // Update the UI accordingly
+    this.heartIconTarget.classList.toggle('card-heart-liked');
+    const favoriteCount = parseInt(this.favoriteCountTarget.textContent);
+    this.favoriteCountTarget.textContent = method === 'POST' ? favoriteCount + 1 : favoriteCount - 1;
   }
 }

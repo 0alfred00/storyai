@@ -37,7 +37,7 @@ class StoriesController < ApplicationController
     # Toggle if a story is public or private
     @story = Story.find(params[:id])
     @story.update(public: !@story.public)
-    redirect_to request.referrer
+    # redirect_to request.referrer
   end
 
   def create

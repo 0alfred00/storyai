@@ -10,12 +10,12 @@ class FavoritesController < ApplicationController
     @favorite.user = current_user
     @favorite.story = @story
     @favorite.save
-    redirect_to request.referrer
+    # redirect_to request.referrer
   end
 
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-    redirect_to request.referrer
+    # redirect_to request.referrer
   end
 end
