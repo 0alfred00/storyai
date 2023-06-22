@@ -23,6 +23,8 @@
         <% else %>
           <%= link_to '<i class="card-heart-liked fa-solid fa-heart"></i>'.html_safe, favorite_path(favorite), data: {turbo_method: :delete, toggle_target: "heartIcon", action: "click->toggle#toggleFavorite", story_id: story.id}  %>
         <% end %>
+      <% else %>
+        <i class="card-heart-unliked fa-solid fa-heart"></i>
       <% end %>
     </div>
     <% if current_user %>
