@@ -3,7 +3,7 @@
     <h2 class="logo-soozie">soozie</h2>
     <i class="fa-solid fa-meteor logo-soozie"></i>
   <% end %>
-  <% if params["action"] != "home" %>
+  <% if (params["action"] != "home") && (user_signed_in?) %>
     <div class="d-flex align-items-center navbar-center">
       <%= form_with url: stories_path, method: :get, class: "d-flex search-field" do %>
         <div class="input-group">
