@@ -75,7 +75,7 @@ export default class extends Controller {
             .then(response => response.json())
             .then(data => {
               // If counter exceeded, force show loaded card with link to last story
-              if (data.storyCreated || counter >= 25) {
+              if (data.storyCreated || counter >= 35) {
                 clearInterval(intervalId);
                 callback(data);
               }
